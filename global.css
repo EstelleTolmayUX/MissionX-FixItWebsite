@@ -15,8 +15,8 @@ header {
   /*places the nav links centered inside header container*/
   height: 5rem;
   padding: 1rem;
-  background-color: white;
   /* Slightly increase vertical padding */
+  background-color: white;
   box-shadow: 0px 0px 20px #00000020;
   /* Add subtle shadow for depth */
   z-index: 1000;
@@ -27,7 +27,7 @@ header {
   display: flex;
   justify-content: center;
   width: 432.61px;
-  /* this px width matches the main-nav container to maintain visual balance and works well with media queries*/
+  /* this px width matches the main-nav container to maintain visual balance and works well with media queries although breakpoint is earlier than mobile*/
   /* log and .main-nav are positioned with margin-left: 10rem values to center them on the page */
   color: #312e81;
   margin-left: 10rem;
@@ -84,6 +84,13 @@ header {
   font-size: 1.5rem;
   cursor: pointer;
   /* only visible on mobile */
+}
+
+/* nav-divider style */
+.nav-divider {
+  color: #1E1B4B;
+  font-weight: bold;
+  margin: 0 0.5rem;
 }
 
 /* === Global Base Styles === */
@@ -287,8 +294,11 @@ footer {
 
 /* === Responsive: Mobile Styles (≤ 768px) === */
 /* Mobile: Stack review-boxes, buttons, and hide nav links */
-/* first break point is 1760px */
-/* === Large Desktop (≤ 1760px) === */
+/* first break point is 1760px based on NAV margins  */
+/* Key changes to media queries
+Single major breakpoint at 1760px - This is where our centered design (with the 10rem margins) stops working
+Above 1760px - Keeps our original centered layout intact
+Below 1760px - Switches to hamburger menu and removes the large margins that were causing the centering */
 @media (max-width: 1760px) {
   .container {
     padding: 0.5rem;
@@ -330,7 +340,7 @@ footer {
     opacity: 0;
   }
 
-  /* ADD THIS NEW BLOCK RIGHT AFTER: */
+  /* ADDED THIS NEW BLOCK RIGHT AFTER: */
   .main-nav.show {
     display: flex;
     transform: translateY(0);
@@ -354,6 +364,11 @@ footer {
     right: 2rem;
   }
 
+  /* Hide styled nav-divider on mobile */
+  .nav-divider {
+    display: none;
+  }
+
   @media (max-width: 850px) {
     header {
       justify-content: center;
@@ -375,6 +390,8 @@ footer {
     }
   }
 }
+
+
 
 /* old footer media queries greyed out
   .footer-content {
