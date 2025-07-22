@@ -1,0 +1,100 @@
+h2 {
+    align-items: center;
+}
+
+h1 {
+    font-weight: 700;
+    margin-top: 0.5rem;
+    /* Reduce space above h1 */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+
+/* === Layout Container USED FLEXBOX === */
+.form-container {
+    max-width: 900px;
+    /*all form containers at 900px*/
+    width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px #00000020;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+}
+
+/* === Main Content === */
+.content {
+    padding: 2rem;
+}
+
+/* === Review Boxes === */
+.review-box {
+    background: #F8F9FB;
+    border: 1px solid #e0e3ea;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+}
+
+.review-box strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #3952BC;
+    font-size: 1rem;
+}
+
+/* Image inside review box */
+.review-box img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    /* height: auto maintains aspect ratio */
+    border-radius: 0.375rem;
+    /*subtle 6px border radius on photos*/
+    margin-top: 0.5rem;
+    display: block;
+    /* display block = better for images */
+}
+
+/* Center the map image in the Location review-box */
+.review-box:first-of-type img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Photo GRID (Uploaded Images) === */
+.photo-placeholder-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns */
+    grid-template-rows: repeat(2, 1fr);
+    /* 2 rows */
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-items: start;
+    /* align items to the left */
+}
+
+/* Image styling for uploaded placeholders */
+.photo-placeholder {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    background: #e0e3ea;
+    border: 1px dashed #b0b7c3;
+    opacity: 0.8;
+    display: block;
+    /* Ensures images behave as blocks */
+    /* Prevent stretching in grid */
+    aspect-ratio: 4 / 3;
+}

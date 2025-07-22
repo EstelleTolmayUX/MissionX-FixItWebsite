@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FixIt - Review Report</title>
+
+    <!-- Link to Global Styles -->
+    <link rel="stylesheet" href="../global.css" />
+
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="../Review-Report-Page/review-report.css" />
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="logo">Fix!t</h1>
+      <!-- Navigation -->
+      <nav>
+        <ul class="main-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">View Reports</a></li>
+          <div>|</div>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Report It</a></li>
+        </ul>
+      </nav>
+      <!-- hamburger menu (mobile only) -->
+      <!-- aria labelling for accessibility on hamburger menu icon -->
+      <div class="menu-icon" aria-label="Open menu" tabindex="0">&#9776;</div>
+    </header>
+
+    <main>
+      <div class="form-container">
+        <!-- reusable layout containers -->
+        <!-- Content Section: Shows report preview before user submits -->
+        <div class="content">
+          <h2>Almost There - Let's Review Your Report...</h2>
+
+          <div class="review-box">
+            <!-- reusable layout containers -->
+            <strong>Location</strong>
+            Mount Eden Road, Mount Eden, Auckland
+            <!-- Static placeholder map image (replace with embedded map or API later) -->
+            <img src="../Images/mapplaceholder.png" alt="Map placeholder" />
+          </div>
+
+          <div class="review-box">
+            <strong>Category / Issue</strong>
+            Graffiti & Vandalism
+          </div>
+
+          <div class="review-box">
+            <strong>Description of the issue</strong>
+            Graffiti on brick wall of library in Mount Eden.
+          </div>
+
+          <div class="review-box">
+            <strong>Your Photos</strong>
+            <!-- Placeholder for uploaded images -->
+            <!-- Placeholder photo gallery (uploads would appear here dynamically) -->
+            <!-- TODO: Could enhance with upload preview and remove button in future -->
+            <div class="photo-placeholder-list">
+              <img src="../Images/graffiti-unsplash.jpg" alt="Photo placeholder 1" class="photo-placeholder" />
+              <img src="../Images/grafitti2-unsplash.jpg" alt="Photo placeholder 2" class="photo-placeholder" />
+              <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 3" class="photo-placeholder" />
+              <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 4" class="photo-placeholder" />
+              <!-- Add more placeholders as needed -->
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="form-buttons-container">
+            <button class="btn-secondary">Back</button>
+            <!-- Buttons: Navigation & Form submission -->
+            <button class="btn-primary">Submit</button>
+          </div>
+        </div>
+        <!-- end of Content -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Get Help</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Local Government</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Get Involved</h4>
+          <ul>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Work with Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
+    </footer>
+
+    <!-- A little bit of JS: This lets the hamburger toggle the nav menu visibility. -->
+    <!-- TODO: Replace with full responsive nav if using a framework later -->
+    <script>
+      const menuIcon = document.querySelector(".menu-icon");
+      const mainNav = document.querySelector(".main-nav");
+
+      // // menuIcon.addEventListener("click", () => {
+      // //   mainNav.style.display = mainNav.style.display === "flex" ? "none" : "flex";
+      // // });
+
+      // 📱Responsive Design
+      // Navbar / Mobile Toggle:
+      // The navigation is responsive. I’ve commented out the hamburger toggle script for now since we're not using JS yet. Same with keyframes as we are still to resolve bugs; taking that on for Mission X
+    </script>
+  </body>
+</html>

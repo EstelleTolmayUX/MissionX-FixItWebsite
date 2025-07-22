@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
+    <!-- Page Stylesheet -->
+    <link rel="stylesheet" href="step3.css" />
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="../global.css" />
+
+    <title>FixIt</title>
+  </head>
+  <body>
+    <!-- Header & Page Navigation -->
+    <header>
+      <h1 class="logo">Fix!t</h1>
+      <!-- Navigation -->
+      <nav>
+        <ul class="main-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">View Reports</a></li>
+          <div>|</div>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Report It</a></li>
+        </ul>
+      </nav>
+      <!-- hamburger menu (mobile only) -->
+      <!-- aria labelling for accessibility on hamburger menu icon -->
+      <div class="menu-icon" aria-label="Open menu" tabindex="0">&#9776;</div>
+    </header>
+
+    <!-- Report Issue Form  -->
+    <main>
+      <div class="form-container">
+        <form action="#" method="post" name="report-issue-form">
+          <!-- Step 1: Enter Location -->
+          <!-- Step 2: Select Category & Write Description -->
+          <!-- Step 3: Upload Photo (optional) -->
+          <div class="step step-3">
+            <h2>Add Photo (optional)</h2>
+
+            <div class="tool-tip">
+              <p>
+                To help us better locate your issue, provide up to 4 photos. It could be a close up shot to show more detail or a wide shot
+                to show landmarks such as buildings or street signs.
+                <br />
+                Be careful not to show any personal information.
+              </p>
+            </div>
+
+            <div class="photo-options">
+              <div class="photo-button">
+                <label for="camera-input">
+                  <i class="fa-solid fa-camera"></i>
+                  Take a Photo
+                </label>
+                <input type="file" id="camera-input" accept="image/*" capture="environment" />
+              </div>
+
+              <div class="photo-button">
+                <label for="camera-roll-input">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  Upload a Photo
+                </label>
+                <input type="file" id="camera-roll-input" accept="image/*" />
+              </div>
+            </div>
+            <!-- Step 4: Review & Submit  -->
+
+            <!-- Form Navigation -->
+            <div class="form-buttons-container">
+              <button class="btn-secondary">Back</button>
+              <button class="btn-primary">Next</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Get Help</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Local Government</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Get Involved</h4>
+          <ul>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Work with Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
+    </footer>
+
+    <script></script>
+  </body>
+</html>
