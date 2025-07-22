@@ -21,21 +21,26 @@
   </head>
 
   <body>
+    <!-- ✅ Accessibility: Skip link -->
+    <a href="#success-page-title" class="skip-link">Skip to main content</a>
+
     <header>
       <h1 class="logo">Fix!t</h1>
+
       <!-- Navigation -->
       <nav>
         <ul class="main-nav">
           <li><a href="#">About</a></li>
           <li><a href="#">View Reports</a></li>
-          <div>|</div>
+          <li class="nav-divider" role="presentation" aria-hidden="true">|</li>
           <li><a href="#">Login</a></li>
           <li><a href="#">Report It</a></li>
         </ul>
       </nav>
-      <!-- hamburger menu (mobile only) -->
+
+      <!-- ✅ Accessible hamburger menu button -->
       <!-- aria labelling for accessibility on hamburger menu icon -->
-      <div class="menu-icon" aria-label="Open menu" tabindex="0">&#9776;</div>
+      <button class="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" tabindex="0">&#9776;</button>
     </header>
 
     <main>
@@ -45,6 +50,7 @@
         <div class="content">
           <form id="reportForm">
             <h2 id="review-report-title">Almost There - Let's Review Your Report</h2>
+            <!-- drops title text to next line on smaller screens -->
             <h2 id="review-report-title-responsive">
               Almost There <br />
               Let's Review Your Report
@@ -74,8 +80,8 @@
               <!-- Placeholder photo gallery (uploads would appear here dynamically) -->
               <!-- TODO: Could enhance with upload preview and remove button in future -->
               <div class="photo-placeholder-list">
-                <img src="../Images/graffiti-unsplash.jpg" alt="Photo placeholder 1" class="photo-placeholder" />
-                <img src="../Images/grafitti2-unsplash.jpg" alt="Photo placeholder 2" class="photo-placeholder" />
+                <img src="../Images/graffiti-unsplash.jpg" alt="photo evidence 1" class="photo-placeholder" />
+                <img src="../Images/grafitti2-unsplash.jpg" alt="photo evidence 2" class="photo-placeholder" />
                 <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 3" class="photo-placeholder" />
                 <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 4" class="photo-placeholder" />
                 <!-- Add more placeholders as needed -->
@@ -132,28 +138,28 @@
       <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
     </footer>
 
-    <!-- A little bit of JS: This lets the hamburger toggle the nav menu visibility. -->
-    <!-- TODO: Replace with full responsive nav if using a framework later -->
-
     <script>
       // == BURGER MENU JS == -->
       const menuIcon = document.querySelector(".menu-icon");
       const mainNav = document.querySelector(".main-nav");
 
       menuIcon.addEventListener("click", () => {
+        const isExpanded = menuIcon.getAttribute("aria-expanded") === "true";
+        menuIcon.setAttribute("aria-expanded", String(!isExpanded));
         mainNav.classList.toggle("show");
       });
 
-      // JS EventListener for Back Button Nav Testing
-      // Check if element exists console.log(document.getElementById("back-btn"));
-      // // Test the path window.location.href = "../step3_photo/step3.html";
-
-      // === EventListener for Back Button Nav ===
+      // ===  == 🔙 BACK BUTTON LOGIC == ===
       // Update script to prevent the default form behavior:
       document.getElementById("back-btn").addEventListener("click", function (event) {
         event.preventDefault(); // Prevent form submission
         window.location.href = "../step3_photo/step3.html";
       });
+
+      // Debugging Lines :
+      // JS EventListener for Back Button Nav Testing
+      // Check if element exists console.log(document.getElementById("back-btn"));
+      // // Test the path window.location.href = "../step3_photo/step3.html";
     </script>
   </body>
 </html>
