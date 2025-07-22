@@ -46,8 +46,19 @@
             <i class="far fa-check-circle"></i>
           </div>
           <h2>Success!</h2>
+
+          <!-- ✅ Add report ID display here -->
+          <div>
+            <p>
+              Your report ID is:
+              <span id="report-id" style="font-weight: bold; color: #22c55e"></span>
+              <button id="copyIDBtn" class="btn-secondary" type="button">Copy</button>
+            </p>
+          </div>
+
           <div class="success-messaging">
             <p>Thank you for submitting your report.</p>
+
             <strong>Reminders:</strong>
             <p>Reports will be reviewed starting the next business day. For immediate attention, please phone your council directly.</p>
             <strong class="important-warning">Always remember:</strong>
@@ -100,5 +111,38 @@
 
       <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
     </footer>
+
+    <script>
+      // Function to generate a random report ID
+      function generateReportID() {
+        const prefix = "FXT";
+        const randomNum = Math.floor(100000 + Math.random() * 900000); // 6-digit number
+        return `${prefix}-${randomNum}`;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Display generated ID
+        const reportID = generateReportID();
+        const idSpan = document.getElementById("report-id");
+        idSpan.textContent = reportID;
+
+        // Clipboard button
+        const copyBtn = document.getElementById("copyIDBtn");
+        copyBtn.addEventListener("click", function () {
+          navigator.clipboard
+            .writeText(reportID)
+            .then(() => alert("Report ID copied to clipboard!"))
+            .catch(() => alert("Failed to copy."));
+        });
+      });
+
+      // == BURGER MENU JS == -->
+      const menuIcon = document.querySelector(".menu-icon");
+      const mainNav = document.querySelector(".main-nav");
+
+      menuIcon.addEventListener("click", () => {
+        mainNav.classList.toggle("show");
+      });
+    </script>
   </body>
 </html>
