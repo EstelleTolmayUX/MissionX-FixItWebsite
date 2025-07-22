@@ -1,7 +1,29 @@
-h2 {
+#success-page-title {
     text-align: center;
     margin-bottom: 2rem;
     font-size: 1.5rem;
+}
+
+/* ✅ Skip Link Styles */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: #ffffff;
+    color: #000000;
+    z-index: 1000;
+    font-weight: bold;
 }
 
 /* === Layout Container === */
