@@ -7,24 +7,30 @@
 
 /* === Header Section and content layout=== */
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
   /*places the nav links centered inside header container*/
   height: 5rem;
   padding: 1rem;
-  background-color: white;
   /* Slightly increase vertical padding */
+  background-color: white;
   box-shadow: 0px 0px 20px #00000020;
   /* Add subtle shadow for depth */
+  z-index: 1000;
+  /* <- this ensures it's above other content */
 }
 
 .logo {
   display: flex;
   justify-content: center;
   width: 432.61px;
-  margin-left: 10rem;
+  /* this px width matches the main-nav container to maintain visual balance and works well with media queries although breakpoint is earlier than mobile*/
+  /* log and .main-nav are positioned with margin-left: 10rem values to center them on the page */
   color: #312e81;
+  margin-left: 10rem;
   font-size: 2.5rem;
 }
 
@@ -37,6 +43,7 @@ header {
   margin: 0;
   /* removes default margin */
   margin-left: 10rem;
+  /* centers on page respective to form-container */
   align-items: center;
   /* centers vertically*/
 }
@@ -77,6 +84,13 @@ header {
   font-size: 1.5rem;
   cursor: pointer;
   /* only visible on mobile */
+}
+
+/* nav-divider style */
+.nav-divider {
+  color: #1E1B4B;
+  font-weight: bold;
+  margin: 0 0.5rem;
 }
 
 /* === Global Base Styles === */
@@ -145,7 +159,7 @@ button {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.5rem;
-  /* 🔹 was 1.5rem : Consider lowering to 0.5rem for modern feel?*/
+  /* 🔹 was 1.5rem : Considered lowering to 0.5rem for modern feel?*/
   font-size: 1rem;
   cursor: pointer;
 }
@@ -241,7 +255,8 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  font-size: 2rem; /* Size of Icons */
+  font-size: 2rem;
+  /* Size of Icons */
 }
 
 .footer-socials a {
@@ -279,58 +294,118 @@ footer {
 
 /* === Responsive: Mobile Styles (≤ 768px) === */
 /* Mobile: Stack review-boxes, buttons, and hide nav links */
-/* @media (max-width: 1760px) {
-     .container {
-         padding: 0.5rem;
-     }
+/* first break point is 1760px based on NAV margins  */
+/* Key changes to media queries
+Single major breakpoint at 1760px - This is where our centered design (with the 10rem margins) stops working
+Above 1760px - Keeps our original centered layout intact
+Below 1760px - Switches to hamburger menu and removes the large margins that were causing the centering */
+@media (max-width: 1760px) {
+  .container {
+    padding: 0.5rem;
+  }
 
-     .content {
-         padding: 1rem 0.5rem;
-     }
+  .content {
+    padding: 1rem 0.5rem;
+  }
 
-     .review-box {
-         padding: 1rem;
-         margin-bottom: 1rem;
-     }
+  .review-box {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 
-     .buttons {
-         flex-direction: column;
-         gap: 0.75rem;
-         align-items: stretch;
-     }
+  .buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
 
-     button {
-         width: 50%;
-     }
+  /* ===  Hide nav links on mobile ===  */
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    margin: 0;
+    /* ADDED THESE 3 ANIMATION LINES to replicate on mobile: */
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+  }
 
-     /* Hide nav links on mobile */
-/* .main-nav {
-         display: none;
-         flex-direction: column;
-     }
+  /* ADDED THIS NEW BLOCK RIGHT AFTER: */
+  .main-nav.show {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-     /* Show hamburger menu on mobile */
-/* .menu-icon {
-         display: block;
-     }
+  header {
+    justify-content: center;
+    padding: 0;
+  }
 
-     header {
-         justify-content: space-around;
-         padding: 0;
-     }
+  .logo {
+    margin: 0;
+    width: auto;
+  }
 
-     .footer-content {
-         flex-direction: column;
-         align-items: center;
-         text-align: center;
-     }
+  /* === Show hamburger menu on mobile ===*/
+  .menu-icon {
+    display: block;
+    position: fixed;
+    right: 2rem;
+  }
 
-     .footer-socials {
-         flex-wrap: wrap;
-         gap: 1rem;
-     }
+  /* Hide styled nav-divider on mobile */
+  .nav-divider {
+    display: none;
+  }
 
-      .footer-section {
-          margin-bottom: 1.5rem;
-      }
- }
+  @media (max-width: 850px) {
+    header {
+      justify-content: center;
+      padding: 0;
+    }
+
+    .logo {
+      margin: 0;
+      width: auto;
+    }
+
+    .menu-icon {
+      position: fixed;
+      right: 2rem;
+    }
+
+    .form-buttons-container {
+      justify-content: center;
+    }
+  }
+}
+
+
+
+/* old footer media queries greyed out
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-section {
+    margin-bottom: 1.5rem;
+  }
+} */

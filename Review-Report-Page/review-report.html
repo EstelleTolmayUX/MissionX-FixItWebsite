@@ -21,21 +21,26 @@
   </head>
 
   <body>
+    <!-- ✅ Accessibility: Skip link -->
+    <a href="#success-page-title" class="skip-link">Skip to main content</a>
+
     <header>
       <h1 class="logo">Fix!t</h1>
+
       <!-- Navigation -->
       <nav>
         <ul class="main-nav">
           <li><a href="#">About</a></li>
           <li><a href="#">View Reports</a></li>
-          <div>|</div>
+          <li class="nav-divider" role="presentation" aria-hidden="true">|</li>
           <li><a href="#">Login</a></li>
           <li><a href="#">Report It</a></li>
         </ul>
       </nav>
-      <!-- hamburger menu (mobile only) -->
+
+      <!-- ✅ Accessible hamburger menu button -->
       <!-- aria labelling for accessibility on hamburger menu icon -->
-      <div class="menu-icon" aria-label="Open menu" tabindex="0">&#9776;</div>
+      <button class="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" tabindex="0">&#9776;</button>
     </header>
 
     <main>
@@ -43,46 +48,53 @@
         <!-- reusable layout containers -->
         <!-- Content Section: Shows report preview before user submits -->
         <div class="content">
-          <h2>Almost There - Let's Review Your Report...</h2>
+          <form id="reportForm">
+            <h2 id="review-report-title">Almost There - Let's Review Your Report</h2>
+            <!-- drops title text to next line on smaller screens -->
+            <h2 id="review-report-title-responsive">
+              Almost There <br />
+              Let's Review Your Report
+            </h2>
 
-          <div class="review-box">
-            <!-- reusable layout containers -->
-            <strong>Location</strong>
-            Mount Eden Road, Mount Eden, Auckland
-            <!-- Static placeholder map image (replace with embedded map or API later) -->
-            <img src="../Images/mapplaceholder.png" alt="Map placeholder" />
-          </div>
-
-          <div class="review-box">
-            <strong>Category / Issue</strong>
-            Graffiti & Vandalism
-          </div>
-
-          <div class="review-box">
-            <strong>Description of the issue</strong>
-            Graffiti on brick wall of library in Mount Eden.
-          </div>
-
-          <div class="review-box">
-            <strong>Your Photos</strong>
-            <!-- Placeholder for uploaded images -->
-            <!-- Placeholder photo gallery (uploads would appear here dynamically) -->
-            <!-- TODO: Could enhance with upload preview and remove button in future -->
-            <div class="photo-placeholder-list">
-              <img src="../Images/graffiti-unsplash.jpg" alt="Photo placeholder 1" class="photo-placeholder" />
-              <img src="../Images/grafitti2-unsplash.jpg" alt="Photo placeholder 2" class="photo-placeholder" />
-              <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 3" class="photo-placeholder" />
-              <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 4" class="photo-placeholder" />
-              <!-- Add more placeholders as needed -->
+            <div class="review-box">
+              <!-- reusable layout containers -->
+              <strong>Location</strong>
+              Mount Eden Road, Mount Eden, Auckland
+              <!-- Static placeholder map image (replace with embedded map or API later) -->
+              <img src="../Images/mapplaceholder.png" alt="Map placeholder" />
             </div>
-          </div>
 
-          <!-- Buttons -->
-          <div class="form-buttons-container">
-            <button class="btn-secondary">Back</button>
-            <!-- Buttons: Navigation & Form submission -->
-            <button class="btn-primary">Submit</button>
-          </div>
+            <div class="review-box">
+              <strong>Category / Issue</strong>
+              Graffiti & Vandalism
+            </div>
+
+            <div class="review-box">
+              <strong>Description of the issue</strong>
+              Graffiti on brick wall of library in Mount Eden.
+            </div>
+
+            <div class="review-box">
+              <strong>Your Photos</strong>
+              <!-- Placeholder for uploaded images -->
+              <!-- Placeholder photo gallery (uploads would appear here dynamically) -->
+              <!-- TODO: Could enhance with upload preview and remove button in future -->
+              <div class="photo-placeholder-list">
+                <img src="../Images/graffiti-unsplash.jpg" alt="photo evidence 1" class="photo-placeholder" />
+                <img src="../Images/grafitti2-unsplash.jpg" alt="photo evidence 2" class="photo-placeholder" />
+                <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 3" class="photo-placeholder" />
+                <img src="https://via.placeholder.com/120x90?text=Photo+2" alt="Photo placeholder 4" class="photo-placeholder" />
+                <!-- Add more placeholders as needed -->
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <!-- Back & FW Navigation & Form submission -->
+            <div class="form-buttons-container">
+              <button class="btn-secondary" id="back-btn" type="button">Back</button>
+              <button class="btn-primary" id="submit-btn" type="button">Submit</button>
+            </div>
+          </form>
         </div>
         <!-- end of Content -->
       </div>
@@ -126,19 +138,28 @@
       <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
     </footer>
 
-    <!-- A little bit of JS: This lets the hamburger toggle the nav menu visibility. -->
-    <!-- TODO: Replace with full responsive nav if using a framework later -->
     <script>
+      // == BURGER MENU JS == -->
       const menuIcon = document.querySelector(".menu-icon");
       const mainNav = document.querySelector(".main-nav");
 
-      // // menuIcon.addEventListener("click", () => {
-      // //   mainNav.style.display = mainNav.style.display === "flex" ? "none" : "flex";
-      // // });
+      menuIcon.addEventListener("click", () => {
+        const isExpanded = menuIcon.getAttribute("aria-expanded") === "true";
+        menuIcon.setAttribute("aria-expanded", String(!isExpanded));
+        mainNav.classList.toggle("show");
+      });
 
-      // 📱Responsive Design
-      // Navbar / Mobile Toggle:
-      // The navigation is responsive. I’ve commented out the hamburger toggle script for now since we're not using JS yet. Same with keyframes as we are still to resolve bugs; taking that on for Mission X
+      // ===  == 🔙 BACK BUTTON LOGIC == ===
+      // Update script to prevent the default form behavior:
+      document.getElementById("back-btn").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent form submission
+        window.location.href = "../step3_photo/step3.html";
+      });
+
+      // Debugging Lines :
+      // JS EventListener for Back Button Nav Testing
+      // Check if element exists console.log(document.getElementById("back-btn"));
+      // // Test the path window.location.href = "../step3_photo/step3.html";
     </script>
   </body>
 </html>
