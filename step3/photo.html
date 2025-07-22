@@ -83,7 +83,7 @@
 
               <!-- Form Navigation -->
               <div class="form-buttons-container">
-                <button class="btn-secondary">Back</button>
+                <button onclick="window.location.href='../step2/category.html'" class="btn-secondary">Back</button>
                 <button class="btn-primary">Next</button>
               </div>
             </div>
@@ -191,7 +191,8 @@
 
           const trashButton = document.createElement("button");
           // added inline css styling here in js as it doesn't apply from css
-          trashButton.innerHTML = '<i class="fa-solid fa-trash" style="color: #ef4444; font-size: 1rem; background-color: transparent;"></i>';
+          trashButton.innerHTML =
+            '<i class="fa-solid fa-trash" style="color: #ef4444; font-size: 1rem; background-color: transparent;"></i>';
           trashButton.addEventListener("click", () => {
             previewContainer.removeChild(imageWrapper);
           });

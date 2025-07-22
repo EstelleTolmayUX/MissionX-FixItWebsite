@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
     <!-- Page Stylesheet -->
-    <link rel="stylesheet" href="category-and-description.css" />
+    <link rel="stylesheet" href="category.css" />
     <!-- Global Stylesheet -->
     <link rel="stylesheet" href="../global.css" />
     <title>FixIt</title>
@@ -43,7 +43,6 @@
     <main id="main">
       <div class="form-container">
         <form action="#" method="post" name="report-issue-form">
-          <fieldset>
             <!-- Step 1: Enter Location -->
             <!-- Step 2: Select Category & Write Description -->
             <div class="step step-2">
@@ -51,7 +50,7 @@
               <div id="category-group">
                 <h2>What is the issue?</h2>
                 <p>Select the category that best summarises your issue.</p>
-
+<fieldset>
                 <div class="accordion-group">
                   <input type="radio" name="category" id="category-1" value="Abandoned Trolleys" class="accordion-toggle" />
                   <label for="category-1">
@@ -242,6 +241,7 @@
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
                   </div>
+                </fieldset>
                 </div>
               </div>
 
@@ -281,10 +281,9 @@
               <!-- Form Navigation -->
               <div class="form-buttons-container">
                 <button type="button" class="btn-secondary">Back</button>
-                <button type="button" class="btn-primary">Next</button>
+                <button onclick="window.location.href='../step3/photo.html'" type="button" class="btn-primary">Next</button>
               </div>
             </div>
-          </fieldset>
         </form>
       </div>
     </main>
