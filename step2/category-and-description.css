@@ -1,0 +1,397 @@
+/* === Global Reset === */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Skip Link */
+.skip {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center; /* Horizontal centering */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #00000020;
+}
+fieldset {
+  border: 0;
+}
+
+/* === Note: This CSS Styling is for Step 2 ONLY === */
+
+/* === Select Category === */
+#category-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  
+}
+.category-label {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 50px;
+  gap: 15px; /* gap between category icon and text */
+  background-color: white;
+  border: 1.5px solid #6b7280;
+  border-radius: 8px;
+  padding: 20px;
+  color: #374151;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+/* -- Hover Effect -- */
+.category-label:hover {
+  border: 2px solid #4f46e5;
+  box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%);
+  background-color: white;
+}
+/* -- Selected Effect -- */
+.category-label.selected {
+  background-color: #4f46e5;
+  color: white;
+}
+.accordion-group {
+  margin-bottom: 15px;
+}
+/* -- Hide Accordion Content When Unchecked (Default) -- */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #eef2ff;
+  padding: 0 20px;
+  border-radius: 0 0 5px 5px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+/* -- Hide Accordion Content When Closed (Default) -- */
+.accordion-toggle {
+  position: absolute;
+  opacity: 0;
+}
+/* -- Show Accordion Content When Opened -- */
+.accordion-toggle:checked + label + .accordion-content {
+  max-height: 200px;
+  padding: 15px 20px;
+}
+
+/* === Add Description === */
+#description-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.information-box {
+  background-color: #eef2ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  /* box-shadow: 0px 0px 8px #e0e7ff; */
+}
+.information-box h2 {
+  padding-bottom: 0.5rem;
+}
+.textarea-container {
+  width: 100%;
+  position: relative;
+}
+#text-box {
+  border: 2px solid #d1d5db;
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+#text-box:hover,
+#text-box:focus {
+  border: 2px solid #4f46e5;
+  box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%);
+  background-color: white;
+}
+#character-counter {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  font-size: 0.9rem;
+  color: #374151;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+/* ==== Media Queries === */
+footer {
+  background-color: #312e81;
+  margin-top: 5rem;
+  text-align: left;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  color: #c7d2fe;
+  text-align: left;
+}
+
+.footer-section h4 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  position: relative;
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 0.313rem;
+}
+
+/* -- Pseudo-Element for Border Animation -- */
+.footer-content li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer-section li a:hover::after {
+  transform: scaleX(1);
+}
+
+.footer-socials {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2rem; /* Size of Icons */
+}
+
+.footer-socials a {
+  color: #eef2ff;
+}
+
+.footer-socials a:hover {
+  color: #c7d2fe;
+}
+
+.footer-divider {
+  height: 1px;
+  width: 100%;
+  background-color: #eef2ff;
+  opacity: 0.25;
+  margin: 2rem auto;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: #c7d2fe;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Small Devices (max-width: 767px) === */
+@media (max-width: 767px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section ul {
+    padding-left: 0;
+  }
+
+  .footer-socials {
+    gap: 0.75rem;
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+  }
+}
+
+/* === Medium Devices (768px to 1023px) === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-content {
+    gap: 5rem;
+    padding: 0 2rem;
+  }
+
+  .footer-section {
+    flex: 1 1 30%;
+    text-align: center;
+  }
+
+  .footer-socials {
+    gap: 1.25rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+  }
+}
+
+/* === Large Devices (min-width: 1024px) === */
+@media (min-width: 1024px) {
+  .footer-content {
+    gap: 8rem;
+    justify-content: space-between;
+    padding: 0 3rem;
+  }
+
+  .footer-section {
+    text-align: left;
+  }
+
+  .footer-socials {
+    gap: 1.5rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 767px) {
+  #category-group {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category-label {
+    padding: 15px;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .information-box {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  #text-box {
+    font-size: 1rem;
+  }
+
+  #character-counter {
+    font-size: 0.8rem;
+    bottom: 15px;
+    right: 10px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #category-group {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .category-label {
+    padding-left: 30px;
+    font-size: 1rem;
+  }
+
+  .information-box {
+    padding: 15px;
+  }
+
+  #text-box {
+    font-size: 1rem;
+  }
+
+  #character-counter {
+    font-size: 0.85rem;
+  }
+}
+
+/* Large screens (desktops and up) */
+@media (min-width: 1024px) {
+  #category-group {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
+  .category-label {
+    padding-left: 50px;
+    font-size: 1rem;
+  }
+
+  .information-box {
+    padding: 15px;
+  }
+
+  #text-box {
+    font-size: 1rem;
+  }
+
+  #character-counter {
+    font-size: 0.9rem;
+  }
+}

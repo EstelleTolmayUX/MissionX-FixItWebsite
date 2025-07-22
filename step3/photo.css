@@ -1,0 +1,194 @@
+/* === Global Reset === */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Skip Link */
+.skip {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center; /* Horizontal centering */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #00000020;
+}
+fieldset {
+  border: 0;
+}
+
+/* === Note: This CSS Styling is for Step 3 ONLY === */
+
+/* === Add Photo === */
+.information-box {
+  background-color: #eef2ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  /* box-shadow: 0px 0px 8px #e0e7ff; */
+}
+#upload-area {
+  background-color: #f3f4f6;
+  border: 1px dashed #6b7280;
+  border-radius: 12px;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+}
+#upload-area h3 {
+  font-size: 1rem;
+  color: #374151;
+}
+#upload-area i {
+  font-size: 4rem;
+  color: #d1d5db;
+}
+#upload-area span {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 10px 0 15px 0;
+}
+#upload-area label {
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #4f46e5;
+  outline: none;
+  background: white;
+  color: #4f46e5;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#upload-area.hover {
+  border-color: #4f46e5;
+  background-color: #eef2ff;
+}
+/* === Preview Image === */
+#preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Doesn't center multiple images inside container when screen size shrinks */
+  margin-top: 20px;
+  gap: 10px;
+}
+.preview-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  flex: 0 1 auto; /* stacks and centers multiple images inside upload size */
+}
+.preview-image img {
+  max-width: 140px;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.trash-wrapper {
+  margin-top: 5px;
+}
+
+/* ==== Media Queries === */
+/* Small screens: phones (max-width: 767px) */
+@media (max-width: 767px) {
+  #upload-area {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  #upload-area h3 {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  #upload-area i {
+    font-size: 3rem;
+  }
+
+  #upload-area span,
+  #upload-area label {
+    font-size: 0.9rem;
+  }
+
+  .preview-image img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .preview-image {
+    margin: 5px;
+  }
+
+  .trash-wrapper {
+    margin-top: 3px;
+  }
+}
+
+/* Medium screens: tablets (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #upload-area h3 {
+    font-size: 1rem;
+  }
+
+  #upload-area i {
+    font-size: 3.5rem;
+  }
+
+  #upload-area label {
+    font-size: 0.95rem;
+  }
+
+  .preview-image img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+/* Large screens: desktops (min-width: 1024px) */
+@media (min-width: 1024px) {
+  #upload-area h3 {
+    font-size: 1.1rem;
+  }
+
+  #upload-area i {
+    font-size: 4rem;
+  }
+
+  #upload-area label {
+    font-size: 1rem;
+  }
+
+  .preview-image img {
+    max-width: 140px;
+    max-height: 140px;
+  }
+}
