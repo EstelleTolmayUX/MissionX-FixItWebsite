@@ -160,6 +160,7 @@ button {
   border: none;
   border-radius: 0.5rem;
   /* 🔹 was 1.5rem : Considered lowering to 0.5rem for modern feel?*/
+  /* 🔹 Agreed - the more rounded button doesn't really suit the shapes of the form container and form content */
   font-size: 1rem;
   cursor: pointer;
 }

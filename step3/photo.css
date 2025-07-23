@@ -4,23 +4,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* Skip Link */
-.skip {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.skip:focus {
-  position: static;
-  width: auto;
-  height: auto;
-}
-
 h2 {
   text-align: center;
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 0.5rem;
 }
 
 .form-container {
@@ -47,148 +35,352 @@ fieldset {
   background-color: #eef2ff;
   padding: 15px;
   border-radius: 8px;
-  margin: 15px 0;
-  /* box-shadow: 0px 0px 8px #e0e7ff; */
+  margin: 15px 0 30px 0;
+  color: #333;
+  line-height: 1.5;
 }
-#upload-area {
+
+.information-box p {
+  margin: 0;
+}
+
+.information-box em {
+  color: #6b7280;
+}
+.upload-area {
   background-color: #f3f4f6;
-  border: 1px dashed #6b7280;
-  border-radius: 12px;
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  border: 2px dashed #6b7280;
+  border-radius: 15px;
+  padding: 60px 20px;
+  text-align: center;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
 }
-#upload-area h3 {
-  font-size: 1rem;
-  color: #374151;
-}
-#upload-area i {
-  font-size: 4rem;
-  color: #d1d5db;
-}
-#upload-area span {
-  font-size: 1rem;
-  color: #6b7280;
-  margin: 10px 0 15px 0;
-}
-#upload-area label {
-  padding: 10px 15px;
-  font-size: 1rem;
-  font-weight: 500;
-  border: 1px solid #4f46e5;
-  outline: none;
-  background: white;
-  color: #4f46e5;
-  border-radius: 8px;
-  cursor: pointer;
-}
-#upload-area.hover {
+
+.upload-area:hover {
   border-color: #4f46e5;
   background-color: #eef2ff;
 }
-/* === Preview Image === */
-#preview-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Doesn't center multiple images inside container when screen size shrinks */
-  margin-top: 20px;
-  gap: 10px;
+
+.upload-area.drag-over {
+  border-color: #4ade80;
+  background-color: #dcfce7;
 }
-.preview-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-  flex: 0 1 auto; /* stacks and centers multiple images inside upload size */
+
+.upload-icon {
+  font-size: 4rem;
+  color: #d1d5db;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
 }
-.preview-image img {
-  max-width: 140px;
-  max-height: 140px;
+
+.upload-area:hover .upload-icon {
+  transform: scale(1.1);
+  color: #4f46e5;
+}
+
+.upload-text {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.upload-span {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.upload-subtext {
+  font-size: 1rem;
+  color: #374151;
+  margin-top: 0.25rem;
+}
+
+/* remove Default display of file input and add styling */
+#imageInput {
+  display: none;
+}
+/* review - initally used flex to manage uploaded photos, but agreed that grid is more responsive */
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.image-card {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.image-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.image-card img {
+  width: 100%;
+  height: 200px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+.image-info {
+  padding: 15px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.image-name {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-size {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #dc2626;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.image-card:hover .remove-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.remove-btn:hover {
+  background: #dc2626;
+  color: white;
+  transform: scale(1.1);
+}
+
+.no-images {
+  text-align: center;
+  color: #374151;
+  font-size: 1rem;
+  margin-top: 40px;
+  padding: 40px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.upload-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 8px;
 }
-.trash-wrapper {
-  margin-top: 5px;
+
+.stat {
+  text-align: center;
 }
 
-/* ==== Media Queries === */
-/* Small screens: phones (max-width: 767px) */
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #374151;
+  margin-top: 2px;
+}
+
+/* === Skip Links === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #4f46e5; /* Tailwind Indigo 600 */
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  font-weight: bold;
+}
+.skip-links a {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: #4f46e5;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.skip-links a:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  left: auto;
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+.remove-btn:focus {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+/* === Media Queries === */
+
+/* Small screens (phones) */
 @media (max-width: 767px) {
-  #upload-area {
-    padding-top: 15px;
-    padding-bottom: 15px;
+  .information-box {
+    padding: 12px;
+    margin: 10px 0 20px 0;
   }
 
-  #upload-area h3 {
-    font-size: 0.9rem;
-    text-align: center;
+  .upload-area {
+    padding: 40px 15px;
+    margin-bottom: 20px;
   }
 
-  #upload-area i {
+  .upload-icon {
     font-size: 3rem;
+    margin-bottom: 15px;
   }
 
-  #upload-area span,
-  #upload-area label {
+  .upload-text {
+    font-size: 1.2rem;
+  }
+
+  .upload-span,
+  .upload-subtext {
     font-size: 0.9rem;
   }
 
-  .preview-image img {
-    max-width: 100px;
-    max-height: 100px;
+  .images-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
   }
 
-  .preview-image {
-    margin: 5px;
+  .image-card img {
+    height: 150px;
   }
 
-  .trash-wrapper {
-    margin-top: 3px;
+  .image-info {
+    padding: 10px;
   }
-}
 
-/* Medium screens: tablets (768px–1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #upload-area h3 {
+  .image-name {
+    font-size: 0.8rem;
+  }
+
+  .image-size {
+    font-size: 0.7rem;
+  }
+
+  .remove-btn {
+    width: 30px;
+    height: 30px;
     font-size: 1rem;
   }
 
-  #upload-area i {
+  .upload-stats {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .stat-number {
+    font-size: 1.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .upload-area {
+    padding: 50px 20px;
+  }
+
+  .upload-icon {
     font-size: 3.5rem;
   }
 
-  #upload-area label {
-    font-size: 0.95rem;
+  .upload-text {
+    font-size: 1.3rem;
   }
 
-  .preview-image img {
-    max-width: 120px;
-    max-height: 120px;
+  .images-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 18px;
+  }
+
+  .image-card img {
+    height: 180px;
+  }
+
+  .upload-stats {
+    gap: 15px;
   }
 }
 
-/* Large screens: desktops (min-width: 1024px) */
+/* Large screens (desktops and up) */
 @media (min-width: 1024px) {
-  #upload-area h3 {
-    font-size: 1.1rem;
-  }
-
-  #upload-area i {
-    font-size: 4rem;
-  }
-
-  #upload-area label {
-    font-size: 1rem;
-  }
-
-  .preview-image img {
-    max-width: 140px;
-    max-height: 140px;
-  }
+  /* keep default styling */
 }
