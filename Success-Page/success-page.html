@@ -187,6 +187,20 @@ Thank you for using FixIt.
           // Could disable download button or show error message
         }
       });
+
+      // ==========================================
+      // MOBILE MENU FUNCTIONALITY
+      // ==========================================
+      // Mobile Navigation Toggle: Hamburger menu functionality
+      //TODO:Improve mobile menu with escape key and click-outside functionality
+      const menuIcon = document.querySelector(".menu-icon");
+      const mainNav = document.querySelector(".main-nav");
+
+      menuIcon.addEventListener("click", () => {
+        const isExpanded = menuIcon.getAttribute("aria-expanded") === "true";
+        menuIcon.setAttribute("aria-expanded", String(!isExpanded));
+        mainNav.classList.toggle("show");
+      });
     </script>
   </body>
 </html>
