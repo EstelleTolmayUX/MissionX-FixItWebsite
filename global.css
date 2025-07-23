@@ -88,7 +88,7 @@ header {
 
 /* nav-divider style */
 .nav-divider {
-  color: #1E1B4B;
+  color: #1e1b4b;
   font-weight: bold;
   margin: 0 0.5rem;
 }
@@ -189,7 +189,7 @@ button {
 
 /* === Footer === */
 footer {
-  background-color: #312e81;
+  background-color: #312e81; /* Tailwind Indigo 900 */
   margin-top: 5rem;
   text-align: left;
   padding-top: 3rem;
@@ -204,11 +204,13 @@ footer {
   max-width: 1000px;
   margin: 0 auto;
   margin-bottom: 2rem;
+  padding: 0 1rem;
 }
 
 .footer-section {
-  color: #c7d2fe;
+  color: #c7d2fe; /* Tailwind Indigo 200 */
   text-align: left;
+  min-width: 150px; /* Prevent sections from getting too narrow */
 }
 
 .footer-section h4 {
@@ -231,6 +233,7 @@ footer {
   color: white;
   text-decoration: none;
   padding-bottom: 0.313rem;
+  display: inline-block; /* Review - Better for hover effects */
 }
 
 /* -- Pseudo-Element for Border Animation -- */
@@ -256,32 +259,66 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  font-size: 2rem;
-  /* Size of Icons */
+  font-size: 2rem; /* fix- use Font-Size to adjust size of icons */
+  flex-wrap: wrap; /* allow wrapping on very small screens */
 }
 
 .footer-socials a {
-  color: #eef2ff;
+  color: #eef2ff; /* Tailwind Indigo 50 */
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-socials a:hover {
-  color: #c7d2fe;
+  color: #c7d2fe; /* Tailwind Indigo 200 */
+  transform: translateY(-3px); /* Review - subtle lift effect */
 }
 
 .footer-divider {
   height: 1px;
   width: 100%;
-  background-color: #eef2ff;
+  background-color: #eef2ff; /* Tailwind Indigo 50 */
   opacity: 0.25;
   margin: 2rem auto;
 }
 
 .footer-copy {
   font-size: 0.75rem;
-  color: #c7d2fe;
+  color: #c7d2fe; /* Tailwind Indigo 200 */
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  padding: 0 1rem; /* add padding for mobile */
+}
+
+@media (max-width: 767px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+    text-align: center;
+  }
+  .footer-section {
+    text-align: center;
+  }
+  .footer-section h4 {
+    font-size: 1rem;
+  }
+  .footer-section ul li a {
+    font-size: 1rem;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+  }
+  .footer-section {
+    text-align: center;
+  }
 }
 
 /* =====Desktop: Show nav links, hide hamburger==== */
@@ -391,8 +428,6 @@ Below 1760px - Switches to hamburger menu and removes the large margins that wer
     }
   }
 }
-
-
 
 /* old footer media queries greyed out
   .footer-content {
