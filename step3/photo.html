@@ -20,20 +20,26 @@
     <!-- Header & Page Navigation -->
     <header>
       <!-- Skip Link -->
+      <a href="#main" class="skip-link">Skip to main content</a>
       <h1 class="logo">Fix!t</h1>
-      <!-- Navigation -->
+
+      <!-- Primary Navigation: Desktop menu -->
       <nav>
         <ul class="main-nav">
           <li><a href="#">About</a></li>
           <li><a href="#">View Reports</a></li>
-          <div>|</div>
+          <!-- Visual separator for navigation items -->
+          <li class="nav-divider" role="presentation" aria-hidden="true">|</li>
           <li><a href="#">Login</a></li>
           <li><a href="#">Report It</a></li>
         </ul>
       </nav>
-      <!-- hamburger menu (mobile only) -->
+
+      <!-- ✅ Accessible hamburger menu button -->
       <!-- aria labelling for accessibility on hamburger menu icon -->
-      <div class="menu-icon" aria-label="Open menu" tabindex="0">&#9776;</div>
+      <button class="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" tabindex="0">
+        &#9776;
+      </button>
     </header>
 
     <!-- Report Issue Form  -->
