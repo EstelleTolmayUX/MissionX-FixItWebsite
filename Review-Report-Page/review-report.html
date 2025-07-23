@@ -14,24 +14,25 @@
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Google Fonts -->
+    <!-- Web Fonts: Preconnect for performance, then load Montserrat font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
   </head>
 
   <body>
-    <!-- ✅ Accessibility: Skip link -->
+    <!-- ✅ Accessibility Enhancement: Skip link: Skip navigation for screen readers and keyboard users-->
     <a href="#success-page-title" class="skip-link">Skip to main content</a>
 
     <header>
       <h1 class="logo">Fix!t</h1>
 
-      <!-- Navigation -->
+      <!-- Primary Navigation: Desktop menu -->
       <nav>
         <ul class="main-nav">
           <li><a href="#">About</a></li>
           <li><a href="#">View Reports</a></li>
+          <!-- Visual separator for navigation items -->
           <li class="nav-divider" role="presentation" aria-hidden="true">|</li>
           <li><a href="#">Login</a></li>
           <li><a href="#">Report It</a></li>
@@ -43,36 +44,39 @@
       <button class="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" tabindex="0">&#9776;</button>
     </header>
 
+    <!-- Main Content Area: Report review form and data display -->
     <main>
+      <!-- Form Container: Wrapper for consistent layout and styling -->
       <div class="form-container">
-        <!-- reusable layout containers -->
         <!-- Content Section: Shows report preview before user submits -->
         <div class="content">
           <form id="reportForm">
             <h2 id="review-report-title">Almost There - Let's Review Your Report</h2>
-            <!-- drops title text to next line on smaller screens -->
+            <!-- Mobile responsive version drops title text to next line on smaller screens -->
             <h2 id="review-report-title-responsive">
               Almost There <br />
               Let's Review Your Report
             </h2>
 
-            <!-- reusable layout containers -->
+            <!-- Location Review Section: Shows where the issue is located -->
             <div class="review-box">
               <strong>Location</strong> <span id="display-location"></span>
 
-              <!-- Static placeholder map image (replace with embedded map or API later) -->
+              <!-- Map Visualization: Static placeholder - TODO: Replace with interactive map API -->
               <img src="../Images/mapplaceholder.png" alt="Map placeholder" />
             </div>
 
+            <!-- Category Review Section: Shows the type of issue reported -->
             <div class="review-box"><strong>Category / Issue</strong> <span id="display-category"></span></div>
 
+            <!-- Description Review Section: Shows user's detailed description -->
             <div class="review-box"><strong>Description of the issue</strong> <span id="display-description"></span></div>
 
+            <!-- Photo Evidence Section: Shows uploaded images -->
             <div class="review-box">
               <strong>Your Photos</strong>
-              <!-- Placeholder for uploaded images -->
-              <!-- Placeholder photo gallery (uploads would appear here dynamically) -->
-              <!-- TODO: Could enhance with upload preview and remove button in future -->
+              <!-- Photo Gallery: Mix of user uploads and placeholders -->
+              <!-- TODO: Implement dynamic photo upload preview with remove functionality -->
               <div class="photo-placeholder-list">
                 <img src="../Images/graffiti-unsplash.jpg" alt="photo evidence 1" class="photo-placeholder" />
                 <img src="../Images/grafitti2-unsplash.jpg" alt="photo evidence 2" class="photo-placeholder" />
@@ -82,19 +86,18 @@
               </div>
             </div>
 
-            <!-- Buttons -->
-            <!-- Back & FW Navigation & Form submission -->
+            <!-- Form Navigation: Back and submit buttons -->
             <div class="form-buttons-container">
               <button class="btn-secondary" id="back-btn" type="button">Back</button>
               <button class="btn-primary" id="submit-btn" type="button">Submit</button>
             </div>
           </form>
         </div>
-        <!-- end of Content -->
+        <!-- End of Content Section -->
       </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Site Footer: Contains help links, legal info, and social media -->
     <footer>
       <div class="footer-content">
         <div class="footer-section">
@@ -126,15 +129,19 @@
         <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
         <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
       </div>
-
+      <!-- Visual Separator -->
       <div class="footer-divider"></div>
-
+      <!-- Copyright Notice -->
       <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
     </footer>
 
     <script>
+      // ==========================================
+      // REPORT DATA MANAGEMENT
+      // ==========================================
       document.addEventListener("DOMContentLoaded", function () {
-        // Mock/simulate report data (this simulates data coming from previous form steps)
+        // Mock Report Data: Simulates data from previous form steps
+        // TODO: Replace with actual data from localStorage or form state management
         const mockReportData = {
           location: "Mount Eden Road, Mount Eden, Auckland",
           category: "Graffiti & Vandalism",
@@ -157,13 +164,20 @@
         });
       });
 
+      // ==========================================
+      // NAVIGATION HANDLERS
+      // ==========================================
       // == 🔙 BACK BUTTON LOGIC ==
       document.getElementById("back-btn").addEventListener("click", function (event) {
         event.preventDefault();
         window.location.href = "../step3/photo.html";
       });
 
-      // == BURGER MENU JS ==
+      // ==========================================
+      // MOBILE MENU FUNCTIONALITY
+      // ==========================================
+      // Mobile Navigation Toggle: Hamburger menu functionality
+      //TODO:Improve mobile menu with escape key and click-outside functionality
       const menuIcon = document.querySelector(".menu-icon");
       const mainNav = document.querySelector(".main-nav");
 
@@ -172,6 +186,7 @@
         menuIcon.setAttribute("aria-expanded", String(!isExpanded));
         mainNav.classList.toggle("show");
       });
+
       // Debugging Lines :
       // JS EventListener for Back Button Nav Testing
       // Check if element exists console.log(document.getElementById("back-btn"));
