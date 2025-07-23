@@ -4,23 +4,18 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* Skip Link */
-.skip {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.skip:focus {
-  position: static;
-  width: auto;
-  height: auto;
-}
 
 h2 {
   text-align: center;
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 0.5rem;
 }
 
 .form-container {
@@ -36,58 +31,60 @@ h2 {
   border-radius: 10px;
   box-shadow: 0px 0px 20px #00000020;
 }
+/* accessiblity - added required fieldset, legend and labels to form but removed default displays */
 fieldset {
   border: 0;
 }
+.visually-hidden {
+  display: none;
+}
 
 /* === Note: This CSS Styling is for Step 2 ONLY === */
-
 /* === Select Category === */
 #category-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  
 }
 .category-label {
   display: flex;
-  flex-grow: 1;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding-left: 50px;
-  gap: 15px; /* gap between category icon and text */
+  gap: 20px; /* fix - gap between category icon and text */
   background-color: white;
-  border: 1.5px solid #6b7280;
+  border: 1.5px solid #6b7280; /* Tailwind Gray 500 */
   border-radius: 8px;
   padding: 20px;
-  color: #374151;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
+  color: #374151; /* Tailwind Gray 700 */
+  font-weight: 600; /* specify font weight here as global css only has set font weights for h tags anf p tags */
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  max-width: 450px; /* fix -  set max width for category label rather than the default size of the category group, but also keeps labels centered in the category group */
+  width: 100%; /* Responsive fallback */
 }
 /* -- Hover Effect -- */
 .category-label:hover {
-  border: 2px solid #4f46e5;
-  box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%);
+  border: 2px solid #4f46e5; /* Tailwind Indigo 600 */
+  box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%); /* Tailwind Indigo 300 */
   background-color: white;
 }
 /* -- Selected Effect -- */
 .category-label.selected {
-  background-color: #4f46e5;
+  background-color: #4f46e5; /* Tailwind Indigo 600 */
   color: white;
 }
 .accordion-group {
   margin-bottom: 15px;
+  max-width: 450px; /* fix -  set max width for accordion label to match the category label rather than the default size of the category group, but also keeps labels centered in the category group */
+  width: 100%; /* Responsive fallback */
 }
-/* -- Hide Accordion Content When Unchecked (Default) -- */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  background-color: #eef2ff;
+  background-color: #eef2ff; /* Tailwind Indigo 50 */
   padding: 0 20px;
   border-radius: 0 0 5px 5px;
   transition: max-height 0.4s ease, padding 0.4s ease;
@@ -111,46 +108,46 @@ fieldset {
   width: 100%;
 }
 .information-box {
-  background-color: #eef2ff;
+  background-color: #eef2ff; /* Tailwind Indigo 50 */
   padding: 15px;
   border-radius: 8px;
+  width: 100%; /* fix - keep edges of information box aligned with text field */
   margin: 15px 0;
-  /* box-shadow: 0px 0px 8px #e0e7ff; */
-}
-.information-box h2 {
-  padding-bottom: 0.5rem;
+  /* box-shadow: 0px 0px 8px #e0e7ff; */ /* Tailwind Indigo 100 */
 }
 .textarea-container {
   width: 100%;
-  position: relative;
+}
+textarea {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #374151; /* Tailwind Gray 700 */
 }
 #text-box {
-  border: 2px solid #d1d5db;
-  width: 100%;
-  padding: 5px;
+  border: 2px solid #d1d5db; /* Tailwind Gray 300 */
+  width: 100%; /* fix - keep edges of text field aligned with information box */
+  padding: 10px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-radius: 8px;
 }
 #text-box:hover,
 #text-box:focus {
-  border: 2px solid #4f46e5;
-  box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%);
+  border-color: #4f46e5; /* Tailwind Indigo 600 */
+  box-shadow: 0 0 0 5px rgba(165, 180, 252, 0.2); /* Tailwind Indigo 300 */
   background-color: white;
 }
 #character-counter {
-  position: absolute;
-  bottom: 20px;
-  right: 15px;
   font-size: 0.9rem;
-  color: #374151;
-  background-color: transparent;
-  pointer-events: none;
+  color: #374151; /* Tailwind Gray 700 */
+  text-align: right;
+  margin-bottom: 10px;
 }
 
-/* ==== Media Queries === */
+/* -- Footer Testing (Save to Global CSS & Remove Later) --  */
 footer {
-  background-color: #312e81;
+  background-color: #312e81; /* Tailwind Indigo 900 */
   margin-top: 5rem;
   text-align: left;
   padding-top: 3rem;
@@ -161,15 +158,17 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10rem;
+  gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
   margin-bottom: 2rem;
+  padding: 0 1rem;
 }
 
 .footer-section {
-  color: #c7d2fe;
+  color: #c7d2fe; /* Tailwind Indigo 200 */
   text-align: left;
+  min-width: 150px; /* Prevent sections from getting too narrow */
 }
 
 .footer-section h4 {
@@ -192,6 +191,7 @@ footer {
   color: white;
   text-decoration: none;
   padding-bottom: 0.313rem;
+  display: inline-block; /* Review - Better for hover effects */
 }
 
 /* -- Pseudo-Element for Border Animation -- */
@@ -217,181 +217,153 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  font-size: 2rem; /* Size of Icons */
+  font-size: 2rem; /* fix- use Font-Size to adjust size of icons */
+  flex-wrap: wrap; /* allow wrapping on very small screens */
 }
 
 .footer-socials a {
-  color: #eef2ff;
+  color: #eef2ff; /* Tailwind Indigo 50 */
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-socials a:hover {
-  color: #c7d2fe;
+  color: #c7d2fe; /* Tailwind Indigo 200 */
+  transform: translateY(-3px); /* Review - subtle lift effect */
 }
 
 .footer-divider {
   height: 1px;
   width: 100%;
-  background-color: #eef2ff;
+  background-color: #eef2ff; /* Tailwind Indigo 50 */
   opacity: 0.25;
   margin: 2rem auto;
 }
 
 .footer-copy {
   font-size: 0.75rem;
-  color: #c7d2fe;
+  color: #c7d2fe; /* Tailwind Indigo 200 */
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 10rem;
   margin-bottom: 0.5rem;
+  padding: 0 1rem; /* add padding for mobile */
 }
 
-/* === Small Devices (max-width: 767px) === */
+/* Footer Media Queries */
+/* Small screens (phones) */
 @media (max-width: 767px) {
   .footer-content {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 0 1rem;
     text-align: center;
   }
-
   .footer-section {
     text-align: center;
   }
-
-  .footer-section ul {
-    padding-left: 0;
+  .footer-section h4 {
+    font-size: 0.5rem;
   }
-
-  .footer-socials {
-    gap: 0.75rem;
-  }
-
-  .footer-copy {
-    font-size: 0.7rem;
-  }
-}
-
-/* === Medium Devices (768px to 1023px) === */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .footer-content {
-    gap: 5rem;
-    padding: 0 2rem;
-  }
-
-  .footer-section {
-    flex: 1 1 30%;
-    text-align: center;
-  }
-
-  .footer-socials {
-    gap: 1.25rem;
-  }
-
-  .footer-copy {
-    font-size: 0.75rem;
-  }
-}
-
-/* === Large Devices (min-width: 1024px) === */
-@media (min-width: 1024px) {
-  .footer-content {
-    gap: 8rem;
-    justify-content: space-between;
-    padding: 0 3rem;
-  }
-
-  .footer-section {
-    text-align: left;
-  }
-
-  .footer-socials {
-    gap: 1.5rem;
-  }
-
-  .footer-copy {
-    font-size: 0.75rem;
-  }
-}
-
-/* Small screens (phones) */
-@media (max-width: 767px) {
-  #category-group {
-    padding-left: 20px;
-    padding-right: 20px;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .category-label {
-    padding: 15px;
-    padding-left: 20px;
-    font-size: 0.95rem;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .information-box {
-    margin: 10px;
-    padding: 10px;
-  }
-
-  #text-box {
-    font-size: 1rem;
-  }
-
-  #character-counter {
-    font-size: 0.8rem;
-    bottom: 15px;
-    right: 10px;
+  .footer-section ul li a {
+    font-size: 0.5rem;
   }
 }
 
 /* Medium screens (tablets) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  #category-group {
-    padding-left: 60px;
-    padding-right: 60px;
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
   }
 
+  .footer-section {
+    text-align: center;
+  }
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #4f46e5; /* Tailwind Indigo 600 */
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  left: auto;
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Large screens (desktops and up) */
+@media (min-width: 1024px) {
+  /* Footer - keep default layout here */
+}
+
+/* === Media Queries === */
+
+/* Small screens (phones) */
+@media (max-width: 767px) {
   .category-label {
-    padding-left: 30px;
-    font-size: 1rem;
+    padding: 15px;
+    padding-left: 20px;
+    gap: 15px;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .accordion-group {
+    max-width: 100%;
+  }
+
+  .accordion-content {
+    padding: 0 15px;
+  }
+
+  .accordion-toggle:checked + label + .accordion-content {
+    padding: 12px 15px;
   }
 
   .information-box {
-    padding: 15px;
+    padding: 12px;
   }
 
   #text-box {
-    font-size: 1rem;
+    padding: 8px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .category-label {
+    padding: 18px;
+    padding-left: 35px;
+    gap: 18px;
+    font-size: 0.95rem;
   }
 
-  #character-counter {
-    font-size: 0.85rem;
+  .accordion-content {
+    padding: 0 18px;
+  }
+
+  .accordion-toggle:checked + label + .accordion-content {
+    padding: 14px 18px;
   }
 }
 
 /* Large screens (desktops and up) */
 @media (min-width: 1024px) {
-  #category-group {
-    padding-left: 150px;
-    padding-right: 150px;
-  }
-
-  .category-label {
-    padding-left: 50px;
-    font-size: 1rem;
-  }
-
-  .information-box {
-    padding: 15px;
-  }
-
-  #text-box {
-    font-size: 1rem;
-  }
-
-  #character-counter {
-    font-size: 0.9rem;
-  }
+  /* keep default styling */
 }
