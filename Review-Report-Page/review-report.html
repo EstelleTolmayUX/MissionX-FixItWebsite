@@ -56,23 +56,17 @@
               Let's Review Your Report
             </h2>
 
+            <!-- reusable layout containers -->
             <div class="review-box">
-              <!-- reusable layout containers -->
-              <strong>Location</strong>
-              Mount Eden Road, Mount Eden, Auckland
+              <strong>Location</strong> <span id="display-location"></span>
+
               <!-- Static placeholder map image (replace with embedded map or API later) -->
               <img src="../Images/mapplaceholder.png" alt="Map placeholder" />
             </div>
 
-            <div class="review-box">
-              <strong>Category / Issue</strong>
-              Graffiti & Vandalism
-            </div>
+            <div class="review-box"><strong>Category / Issue</strong> <span id="display-category"></span></div>
 
-            <div class="review-box">
-              <strong>Description of the issue</strong>
-              Graffiti on brick wall of library in Mount Eden.
-            </div>
+            <div class="review-box"><strong>Description of the issue</strong> <span id="display-description"></span></div>
 
             <div class="review-box">
               <strong>Your Photos</strong>
@@ -139,7 +133,37 @@
     </footer>
 
     <script>
-      // == BURGER MENU JS == -->
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mock/simulate report data (this simulates data coming from previous form steps)
+        const mockReportData = {
+          location: "Mount Eden Road, Mount Eden, Auckland",
+          category: "Graffiti & Vandalism",
+          description: "Graffiti on brick wall of library in Mount Eden.",
+        };
+
+        // Display the data on Review page (populate the spans/elements)
+        document.getElementById("display-location").textContent = mockReportData.location;
+        document.getElementById("display-category").textContent = mockReportData.category;
+        document.getElementById("display-description").textContent = mockReportData.description;
+
+        // ✅ SUBMIT BUTTON – Save data and go to Success Page
+        document.getElementById("submit-btn").addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Save the same data that was displayed
+          localStorage.setItem("reportData", JSON.stringify(mockReportData));
+
+          window.location.href = "../Success-Page/success-page.html";
+        });
+      });
+
+      // == 🔙 BACK BUTTON LOGIC ==
+      document.getElementById("back-btn").addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = "../step3/photo.html";
+      });
+
+      // == BURGER MENU JS ==
       const menuIcon = document.querySelector(".menu-icon");
       const mainNav = document.querySelector(".main-nav");
 
@@ -148,14 +172,6 @@
         menuIcon.setAttribute("aria-expanded", String(!isExpanded));
         mainNav.classList.toggle("show");
       });
-
-      // ===  == 🔙 BACK BUTTON LOGIC == ===
-      // Update script to prevent the default form behavior:
-      document.getElementById("back-btn").addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent form submission
-        window.location.href = "../step3_photo/step3.html";
-      });
-
       // Debugging Lines :
       // JS EventListener for Back Button Nav Testing
       // Check if element exists console.log(document.getElementById("back-btn"));
