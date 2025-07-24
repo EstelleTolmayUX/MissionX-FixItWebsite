@@ -258,6 +258,8 @@ footer {
   gap: 1rem;
   font-size: 2rem;
   /* Size of Icons */
+  font-size: 2rem; /* fix- use Font-size to adjust size of icons */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 .footer-socials a {
