@@ -289,7 +289,7 @@ footer {
   margin-bottom: 0.5rem;
   padding: 0 1rem; /* add padding for mobile */
 }
-
+/* Small screens (tablets) */
 @media (max-width: 767px) {
   .footer-content {
     flex-direction: column;

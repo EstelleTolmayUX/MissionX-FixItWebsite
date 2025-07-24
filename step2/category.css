@@ -17,7 +17,7 @@ h3 {
   color: black;
   margin-bottom: 0.5rem;
 }
-
+/* ✅ Review - Agreed on this styling for our form card - can be added to Global css & ensure the form content is nested inside <div class="from-container" </div> */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ h3 {
   border-radius: 10px;
   box-shadow: 0px 0px 20px #00000020;
 }
-/* accessiblity - added required fieldset, legend and labels to form but removed default displays */
+/* 🔹 accessiblity - added required fieldset, legend and labels to form but removed default displays */
 fieldset {
   border: 0;
 }
@@ -71,7 +71,7 @@ fieldset {
   box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%); /* Tailwind Indigo 300 */
   background-color: white;
 }
-/* -- Selected Effect -- */
+/* -- Selected Styling - link in JavaScript -- */
 .category-label.selected {
   background-color: #4f46e5; /* Tailwind Indigo 600 */
   color: white;
@@ -89,12 +89,11 @@ fieldset {
   border-radius: 0 0 5px 5px;
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
-/* -- Hide Accordion Content When Closed (Default) -- */
 .accordion-toggle {
   position: absolute;
   opacity: 0;
 }
-/* -- Show Accordion Content When Opened -- */
+/* -- Show Accordion Content When Selected/Opened -- */
 .accordion-toggle:checked + label + .accordion-content {
   max-height: 200px;
   padding: 15px 20px;
@@ -111,7 +110,7 @@ fieldset {
   background-color: #eef2ff; /* Tailwind Indigo 50 */
   padding: 15px;
   border-radius: 8px;
-  width: 100%; /* fix - keep edges of information box aligned with text field */
+  width: 100%; /* 🐞 Fix - used % as it it more responsive does a better job of keeping edges of information box aligned with text field */
   margin: 15px 0;
   /* box-shadow: 0px 0px 8px #e0e7ff; */ /* Tailwind Indigo 100 */
 }
@@ -126,7 +125,7 @@ textarea {
 }
 #text-box {
   border: 2px solid #d1d5db; /* Tailwind Gray 300 */
-  width: 100%; /* fix - keep edges of text field aligned with information box */
+  width: 100%; /* 🐞 Fix - used % as it it more responsive does a better job of keeping edges of text field aligned with information box */
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -169,13 +168,7 @@ textarea {
   outline-offset: 2px;
 }
 
-/* Large screens (desktops and up) */
-@media (min-width: 1024px) {
-  /* Footer - keep default layout here */
-}
-
 /* === Media Queries === */
-
 /* Small screens (phones) */
 @media (max-width: 767px) {
   .category-label {
@@ -204,7 +197,7 @@ textarea {
 
   #text-box {
     padding: 8px;
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
   }
 }
 
