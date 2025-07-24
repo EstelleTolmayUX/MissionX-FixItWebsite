@@ -48,21 +48,22 @@
           <!-- Step 1: Enter Location -->
           <!-- Step 2: Select Category & Write Description -->
           <!-- <div class="step step-2"> = A 'Step Step-X' Classification is useful if we combine all steps into a single html file and toggle between steps with the next and back buttons -->
-            <fieldset id="category-group" role="radiogroup">
+            <div id="category-group">
+              <fieldset role="radiogroup" aria-labelledby="category-heading">
               <!-- Opted to use h2 and p rather than legend so classifed legend as visually hidden -->
               <legend class="visually-hidden">Issue Category Selection</legend>
-              <h2>What is the issue?</h2>
-              <p>Select the category that best summarises your issue.</p>
+              <h2 id="category-heading">What is the issue?</h2>
+              <p id="category-instructions">Select the category that best summarises your issue.</p>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-1" value="Abandoned Trolleys" class="accordion-toggle" />
-                <label for="category-1">
+                <input type="radio" name="category" id="category-1" value="Abandoned Trolleys" aria-describedby="category-1-description" class="accordion-toggle" tabindex="0"/>
+                <label for="category-1" aria-label="Abandoned Trolleys">
                   <span class="category-label">
                     <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                     Abandoned Trolleys
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" id="category-1-description">
                    <p>
                     Please select if you would like to report any shopping trolleys that have been left in parks, streets, or other public spaces. These can cause obstructions or safety issues, especially on footpaths or roads.
                     <br />
@@ -72,14 +73,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-2" value="Animals & Pests" class="accordion-toggle" />
-                <label for="category-2">
+                <input type="radio" name="category" id="category-2" value="Animals & Pests" aria-describedby="category-2-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-2" aria-label="Animals & Pests">
                   <span class="category-label">
                     <i class="fa-solid fa-kiwi-bird" aria-hidden="true"></i>
                     Animals & Pests
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-2-description">
                   <p>
                     Please select if you would like to report stray or aggressive animals, dead wildlife, or pest infestations (e.g., rats or wasps).
                     <br />
@@ -89,14 +90,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-3" value="Footpaths" class="accordion-toggle" />
-                <label for="category-3">
+                <input type="radio" name="category" id="category-3" value="Footpaths" aria-describedby="category-3-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-3" aria-label="Footpaths">
                   <span class="category-label">
                     <i class="fa-solid fa-shoe-prints" aria-hidden="true"></i>
                     Footpaths
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-3-description">
                   <p>
                     Please select if you would like to report broken, uneven, or blocked footpaths. These may be hazardous, particularly for children, older adults, or people using mobility aids.
                   </p>
@@ -104,14 +105,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-4" value="Graffiti & Vandalism" class="accordion-toggle" />
-                <label for="category-4">
+                <input type="radio" name="category" id="category-4" value="Graffiti & Vandalism" aria-describedby="category-4-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-4" aria-label="Graffiti & Vandalism">
                   <span class="category-label">
                     <i class="fa-solid fa-paint-roller" aria-hidden="true"></i>
                     Graffiti & Vandalism
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-4-description">
                   <p>
                     Please select if you would like to report graffiti or deliberate damage to property. Any vandalism that poses a hazard, or offensive or threatening graffiti should be reported as a priority.
                   </p>
@@ -119,14 +120,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-5" value="Parks & Public Facilities" class="accordion-toggle" />
-                <label for="category-5">
+                <input type="radio" name="category" id="category-5" value="Parks & Public Facilities" aria-describedby="category-5-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-5" aria-label="Parks & Public Facilities">
                   <span class="category-label">
                     <i class="fa-solid fa-tree" aria-hidden="true"></i>
                     Parks & Public Facilities
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-5-description">
                   <p>
                     Please select if you would like to report damaged playground equipment, unsafe structures, broken seating, or unclean public toilets in parks or community areas.
                     <br />
@@ -136,14 +137,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-6" value="Public Transport" class="accordion-toggle" />
-                <label for="category-6">
+                <input type="radio" name="category" id="category-6" value="Public Transport" aria-describedby="category-6-description" class="accordion-toggle" tabindex="-1"/>
+                <label for="category-6" aria-label="Public Transport">
                   <span class="category-label">
                     <i class="fa-solid fa-bus-simple" aria-hidden="true"></i>
                     Public Transport
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-6-description">
                   <p>
                     Please select if you would like to report damaged bus shelters, missing signage, or hazards at public transport stops.
                     <br />
@@ -153,14 +154,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-7" value="Roads & Signage" class="accordion-toggle" />
-                <label for="category-7">
+                <input type="radio" name="category" id="category-7" value="Roads & Signage" aria-describedby="category-7-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-7" aria-label="Roads & Signage">
                   <span class="category-label">
                     <i class="fa-solid fa-road" aria-hidden="true"></i>
                     Roads & Signage
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-7-description">
                   <p>
                     Please select if you would like to report potholes, loose debris, or missing or damaged road signs. These issues may affect vehicle safety or visibility.
                   </p>
@@ -168,14 +169,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-8" value="Rubbish & Recycling" class="accordion-toggle" />
-                <label for="category-8">
+                <input type="radio" name="category" id="category-8" value="Rubbish & Recycling" aria-describedby="category-8-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-8" aria-label="Rubbish & Recycling">
                   <span class="category-label">
                     <i class="fa-solid fa-trash" aria-hidden="true"></i>
                     Rubbish & Recycling
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-8-description">
                   <p>
                     Please select if you would like to report overflowing bins, missed collections, or illegal dumping.
                     <br />
@@ -185,14 +186,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-9" value="Street Lights" class="accordion-toggle" />
-                <label for="category-9">
+                <input type="radio" name="category" id="category-9" value="Street Lights" aria-describedby="category-9-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-9" aria-label="Street Lights">
                   <span class="category-label">
                     <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
                     Street Lights
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-9-description">
                   <p>
                     Please select if you would like to report street lights that are flickering, not working, or permanently on.
                     <br />
@@ -202,14 +203,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-10" value="Water & Drainage" class="accordion-toggle" />
-                <label for="category-10">
+                <input type="radio" name="category" id="category-10" value="Water & Drainage" aria-describedby="category-10-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-10" aria-label="Water & Drainage">
                   <span class="category-label">
                     <i class="fa-solid fa-droplet" aria-hidden="true"></i>
                     Water & Drainage
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-10-description">
                   <p>
                     Please select if you would like to report leaking water mains, blocked drains, or surface flooding.
                     <br />
@@ -219,14 +220,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-11" value="Utilities" class="accordion-toggle" />
-                <label for="category-11">
+                <input type="radio" name="category" id="category-11" value="Utilities" aria-describedby="category-11-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-11" aria-label="Utilities">
                   <span class="category-label">
                     <i class="fa-solid fa-bolt" aria-hidden="true"></i>
                     Utilities
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-11-description">
                   <p>
                     Please select if you would like to report exposed wires, broken utility boxes, or gas smells.
                     <br />
@@ -236,14 +237,14 @@
               </div>
 
               <div class="accordion-group">
-                <input type="radio" name="category" id="category-12" value="Vehicles" class="accordion-toggle" />
-                <label for="category-12">
+                <input type="radio" name="category" id="category-12" value="Vehicles" aria-describedby="category-12-description" class="accordion-toggle" tabindex="-1" />
+                <label for="category-12" aria-label="Vehicles">
                   <span class="category-label">
                     <i class="fa-solid fa-car" aria-hidden="true"></i>
                     Vehicles
                   </span>
                 </label>
-                <div class="accordion-content">
+                <div class="accordion-content" aria-describedby="category-12-description">
                   <p>
                     Please select if you would like to report abandoned or illegally parked vehicles—particularly if they are blocking driveways, fire hydrants, or pedestrian crossings.
                     <br />
@@ -252,11 +253,12 @@
                 </div>
               </div>
             </fieldset>
+          </div>
 
             <div id="description-group">
               <div class="information-box">
-                <h3>Tell us about the issue.</h3>
-                <p>
+                <h3 id="description-heading">Tell us about the issue.</h3>
+                <p id="description-instructions">
                   Where is the issue? When did you first notice the issue? How long has it remained unresolved?
                   <br />
                   Please keep it respectful and be careful not to share any personal information.
@@ -266,7 +268,7 @@
               <div class="textarea-container">
                 <label for="text-box" class="visually-hidden">Issue Description</label>
                 <textarea id="text-box" name="description" maxlength="300" rows="6"></textarea>
-                <div id="character-counter" aria-live="polite"><span id="current">0</span>/300</div>
+                <div id="character-counter" aria-label="Character Count" aria-live="polite"><span id="current">0</span>/300</div>
               </div>
             </div>
             <!-- Step 3: Upload Photo (optional) -->
@@ -311,9 +313,9 @@
       </div>
 
       <div class="footer-socials">
-        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-square-facebook" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter" aria-hidden="true"></i></a>
       </div>
 
       <div class="footer-divider"></div>

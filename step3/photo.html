@@ -60,10 +60,10 @@
           </div>
 
           <div class="photo-group">
-            <h2>Add Photo</h2>
+            <h2 id="add-photo-heading">Add Photo</h2>
 
             <div class="information-box">
-              <p>
+              <p id="add-photo-instructions">
                 To help us better locate your issue, provide up to 4 photos. It could be a close up shot to show more detail or a wide shot
                 to show landmarks such as buildings or street signs.
                 <br />
@@ -139,9 +139,9 @@
       </div>
 
       <div class="footer-socials">
-        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-square-facebook" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter" aria-hidden="true"></i></a>
       </div>
 
       <div class="footer-divider"></div>
@@ -246,7 +246,7 @@
             <div class="image-info">
                 <div class="image-name">${imageData.name}</div>
             </div>
-            <button class="remove-btn" onclick="removeImage(${imageData.id})" aria-label="delete ${imageData.name}" title="delete photo"><i class="fa-solid fa-trash"></i></button>`;
+            <button class="remove-btn" onclick="removeImage(${imageData.id})" aria-label="delete ${imageData.name}" title="delete photo"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>`;
 
         imagesGrid.appendChild(imageCard);
       }
@@ -271,7 +271,7 @@
                     <div class="image-info">
                         <div class="image-name">${imageData.name}</div>
                     </div>
-                    <button class="remove-btn" onclick="removeImage(${imageData.id})" aria-label="delete ${imageData.name}" title="delete photo"><i class="fa-solid fa-trash"></i></button>`;
+                    <button class="remove-btn" onclick="removeImage(${imageData.id})" aria-label="delete ${imageData.name}" title="delete photo"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>`;
 
           imagesGrid.appendChild(imageCard);
         });
