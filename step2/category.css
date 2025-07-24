@@ -1,0 +1,232 @@
+/* === Global Reset === */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center; /* Horizontal centering */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #00000020;
+}
+/* accessiblity - added required fieldset, legend and labels to form but removed default displays */
+fieldset {
+  border: 0;
+}
+.visually-hidden {
+  display: none;
+}
+
+/* === Note: This CSS Styling is for Step 2 ONLY === */
+/* === Select Category === */
+#category-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.category-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 50px;
+  gap: 20px; /* fix - gap between category icon and text */
+  background-color: white;
+  border: 1.5px solid #6b7280; /* Tailwind Gray 500 */
+  border-radius: 8px;
+  padding: 20px;
+  color: #374151; /* Tailwind Gray 700 */
+  font-weight: 600; /* specify font weight here as global css only has set font weights for h tags anf p tags */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  max-width: 450px; /* fix -  set max width for category label rather than the default size of the category group, but also keeps labels centered in the category group */
+  width: 100%; /* Responsive fallback */
+}
+/* -- Hover Effect -- */
+.category-label:hover {
+  border: 2px solid #4f46e5; /* Tailwind Indigo 600 */
+  box-shadow: 0px 0px 0px 5px rgb(165, 180, 252, 20%); /* Tailwind Indigo 300 */
+  background-color: white;
+}
+/* -- Selected Effect -- */
+.category-label.selected {
+  background-color: #4f46e5; /* Tailwind Indigo 600 */
+  color: white;
+}
+.accordion-group {
+  margin-bottom: 15px;
+  max-width: 450px; /* fix -  set max width for accordion label to match the category label rather than the default size of the category group, but also keeps labels centered in the category group */
+  width: 100%; /* Responsive fallback */
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #eef2ff; /* Tailwind Indigo 50 */
+  padding: 0 20px;
+  border-radius: 0 0 5px 5px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+/* -- Hide Accordion Content When Closed (Default) -- */
+.accordion-toggle {
+  position: absolute;
+  opacity: 0;
+}
+/* -- Show Accordion Content When Opened -- */
+.accordion-toggle:checked + label + .accordion-content {
+  max-height: 200px;
+  padding: 15px 20px;
+}
+
+/* === Add Description === */
+#description-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.information-box {
+  background-color: #eef2ff; /* Tailwind Indigo 50 */
+  padding: 15px;
+  border-radius: 8px;
+  width: 100%; /* fix - keep edges of information box aligned with text field */
+  margin: 15px 0;
+  /* box-shadow: 0px 0px 8px #e0e7ff; */ /* Tailwind Indigo 100 */
+}
+.textarea-container {
+  width: 100%;
+}
+textarea {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #374151; /* Tailwind Gray 700 */
+}
+#text-box {
+  border: 2px solid #d1d5db; /* Tailwind Gray 300 */
+  width: 100%; /* fix - keep edges of text field aligned with information box */
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+}
+#text-box:hover,
+#text-box:focus {
+  border-color: #4f46e5; /* Tailwind Indigo 600 */
+  box-shadow: 0 0 0 5px rgba(165, 180, 252, 0.2); /* Tailwind Indigo 300 */
+  background-color: white;
+}
+#character-counter {
+  font-size: 0.9rem;
+  color: #374151; /* Tailwind Gray 700 */
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #4f46e5; /* Tailwind Indigo 600 */
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  left: auto;
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Large screens (desktops and up) */
+@media (min-width: 1024px) {
+  /* Footer - keep default layout here */
+}
+
+/* === Media Queries === */
+
+/* Small screens (phones) */
+@media (max-width: 767px) {
+  .category-label {
+    padding: 15px;
+    padding-left: 20px;
+    gap: 15px;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .accordion-group {
+    max-width: 100%;
+  }
+
+  .accordion-content {
+    padding: 0 15px;
+  }
+
+  .accordion-toggle:checked + label + .accordion-content {
+    padding: 12px 15px;
+  }
+
+  .information-box {
+    padding: 12px;
+  }
+
+  #text-box {
+    padding: 8px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .category-label {
+    padding: 18px;
+    padding-left: 35px;
+    gap: 18px;
+    font-size: 0.95rem;
+  }
+
+  .accordion-content {
+    padding: 0 18px;
+  }
+
+  .accordion-toggle:checked + label + .accordion-content {
+    padding: 14px 18px;
+  }
+}
+
+/* Large screens (desktops and up) */
+@media (min-width: 1024px) {
+  /* keep default styling */
+}

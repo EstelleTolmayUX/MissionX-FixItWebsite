@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
+    <!-- Page Stylesheet -->
+    <link rel="stylesheet" href="photo.css" />
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="../global.css" />
+
+    <title>FixIt</title>
+  </head>
+  <body>
+    <!-- Header & Page Navigation -->
+    <header>
+      <!-- Skip Link -->
+      <a href="#main" class="skip-link">Skip to main content</a>
+      <h1 class="logo">Fix!t</h1>
+
+      <!-- Primary Navigation: Desktop menu -->
+      <nav>
+        <ul class="main-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">View Reports</a></li>
+          <!-- Visual separator for navigation items -->
+          <li class="nav-divider" role="presentation" aria-hidden="true">|</li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Report It</a></li>
+        </ul>
+      </nav>
+
+      <!-- ✅ Accessible hamburger menu button -->
+      <!-- aria labelling for accessibility on hamburger menu icon -->
+      <button class="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" tabindex="0">
+        &#9776;
+      </button>
+    </header>
+
+    <!-- Report Issue Form  -->
+
+    <!-- Main Content id required for Skip Link -->
+    <main id="main">
+      <div class="form-container">
+        <form action="#" method="post" name="report-issue-form">
+          <!-- Step 1: Enter Location -->
+          <!-- Step 2: Select Category & Write Description -->
+          <!-- Step 3: Upload Photo -->
+          <!-- <div class="step step-3"> = A 'Step Step-X' Classification is useful if we combine all steps into a single html file and toggle between steps with the next and back buttons -->
+          <!-- Skip Links -->
+          <div class="skip-links">
+            <a href="#uploadArea">Skip to upload area</a>
+            <a href="#imagesGrid">Skip to uploaded images</a>
+          </div>
+
+          <div class="photo-group">
+            <h2>Add Photo</h2>
+
+            <div class="information-box">
+              <p>
+                To help us better locate your issue, provide up to 4 photos. It could be a close up shot to show more detail or a wide shot
+                to show landmarks such as buildings or street signs.
+                <br />
+                <em>Be careful not to show any personal information.</em>
+              </p>
+            </div>
+            <!--- A Drag & Drop API Here --->
+            <div
+              class="upload-area"
+              id="uploadArea"
+              role="button"
+              tabindex="0"
+              aria-label="upload photos by dragging and dropping or click to browse photos">
+              <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i></div>
+              <div class="upload-text">Drag & Drop Photos Here</div>
+              <span class="upload-span">or</span>
+              <div class="upload-subtext">Click to Browse Gallery</div>
+              <input type="file" id="imageInput" multiple accept="image/*" aria-label="select photos to upload" />
+            </div>
+
+            <div class="upload-stats">
+              <div class="stat">
+                <div class="stat-number" id="imageCount">0</div>
+                <div class="stat-label">Photos</div>
+              </div>
+            </div>
+
+            <div class="images-grid" id="imagesGrid" role="grid" aria-label="uploaded photos"></div>
+
+            <div class="no-images" id="noImages" role="upload status">No Photos</div>
+          </div>
+          <!-- Step 4: Review & Submit  -->
+
+          <!-- Form Navigation -->
+          <div class="form-buttons-container">
+            <button onclick="goToStep('../step2/category.html')" type="button" class="btn-secondary">Back</button>
+            <button onclick="goToStep('../step4/review-report.html')" type="button" class="btn-primary">Next</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Get Help</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Local Government</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Get Involved</h4>
+          <ul>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Work with Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-copy">&copy; 2025 FixIt. All rights reserved.</div>
+    </footer>
+    <script>
+      let uploadedImages = [];
+      let imageCounter = 0;
+
+      const uploadArea = document.getElementById("uploadArea");
+      const fileInput = document.getElementById("imageInput");
+      const imagesGrid = document.getElementById("imagesGrid");
+      const noImages = document.getElementById("noImages");
+      const imageCount = document.getElementById("imageCount");
+
+      // Click to Upload
+      uploadArea.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      // Keyboard Support for Upload
+      uploadArea.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          fileInput.click();
+        }
+      });
+
+      // File input change
+      fileInput.addEventListener("change", (e) => {
+        handleFiles(e.target.files);
+      });
+
+      // Drag & Drop Events
+      uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("drag-over");
+      });
+
+      uploadArea.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("drag-over");
+      });
+
+      uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("drag-over");
+        handleFiles(e.dataTransfer.files);
+      });
+
+      function handleFiles(files) {
+        Array.from(files).forEach((file) => {
+          if (file.type.startsWith("image/")) {
+            addImage(file);
+          }
+        });
+        updateStats();
+        updateDisplay();
+      }
+
+      function addImage(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imageData = {
+            id: ++imageCounter,
+            name: file.name,
+            size: file.size,
+            src: e.target.result,
+            file: file,
+          };
+          uploadedImages.push(imageData);
+          renderImage(imageData);
+          updateStats();
+          updateDisplay();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function renderImage(imageData) {
+        const imageCard = document.createElement("div");
+        imageCard.className = "image-card";
+        imageCard.style.animationDelay = `${uploadedImages.length * 0.1}s`;
+        imageCard.setAttribute("role", "gridcell");
+
+        imageCard.innerHTML = `
+                <img src="${imageData.src}" alt="${imageData.name}" loading="lazy">
+                <div class="image-info">
+                    <div class="image-name">${imageData.name}</div>
+                </div>
+                <button class="remove-btn" onclick="removeImage(${imageData.id})" aria-label="delete ${imageData.name}" title="delete photo">×</button>`;
+
+        imagesGrid.appendChild(imageCard);
+      }
+
+      function removeImage(id) {
+        uploadedImages = uploadedImages.filter((img) => img.id !== id);
+        renderAllImages();
+        updateStats();
+        updateDisplay();
+      }
+
+      function renderAllImages() {
+        imagesGrid.innerHTML = "";
+        uploadedImages.forEach((imageData, index) => {
+          const imageCard = document.createElement("div");
+          imageCard.className = "image-card";
+          imageCard.style.animationDelay = `${index * 0.05}s`;
+          imageCard.setAttribute("role", "gridcell");
+
+          imageCard.innerHTML = `
+                    <img src="${imageData.src}" alt="${imageData.name}" loading="lazy">
+                    <div class="image-info">
+                        <div class="image-name">${imageData.name}</div>
+                    </div>
+                    <button class="remove-btn" onclick="removeImage(${imageData.id})" aria-label="delete ${imageData.name}" title="delete photo">×</button>`;
+
+          imagesGrid.appendChild(imageCard);
+        });
+      }
+
+      function updateStats() {
+        const count = uploadedImages.length;
+        imageCount.textContent = count;
+      }
+
+      function updateDisplay() {
+        if (uploadedImages.length === 0) {
+          noImages.style.display = "block";
+          imagesGrid.style.display = "none";
+        } else {
+          noImages.style.display = "none";
+          imagesGrid.style.display = "grid";
+        }
+      }
+      // Initial display update
+      updateDisplay();
+
+      // Note: Using a JavaScript function on "next" and "back" buttons to navigate between step pages  - bug with inline onlick
+      function goToStep(page) {
+        window.location.href = page;
+      }
+    </script>
+  </body>
+</html>
