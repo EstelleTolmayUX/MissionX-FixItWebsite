@@ -104,7 +104,7 @@
           <!-- Form Navigation -->
           <div class="form-buttons-container">
             <button onclick="goToStep('../step2/category.html')" type="button" class="btn-secondary">Back</button>
-            <button onclick="goToStep('../step4/review-report.html')" type="button" class="btn-primary">Next</button>
+            <button onclick="goToStep('../Review-Report-Page/review-report.html')" type="button" class="btn-primary">Next</button>
           </div>
         </form>
       </div>
@@ -179,7 +179,7 @@
         fileInput.click();
       });
 
-      // Keyboard Support for Upload
+      // Accessibility - Keyboard Support for Upload
       uploadArea.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -194,17 +194,17 @@
 
       // Drag & Drop Events
       uploadArea.addEventListener("dragover", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // ✅ fix - remember to include this line code to allow drag/drop event to be actioned and cancel default browser behaviour or infinite loop!
         uploadArea.classList.add("drag-over");
       });
 
       uploadArea.addEventListener("dragleave", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // ✅ fix - remember to include this line code to allow drag/drop event to be actioned and cancel default browser behaviour or infinite loop!
         uploadArea.classList.remove("drag-over");
       });
 
       uploadArea.addEventListener("drop", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // ✅ fix - remember to include this line code to allow drag/drop event to be actioned and cancel default browser behaviour or infinite loop!
         uploadArea.classList.remove("drag-over");
         handleFiles(e.dataTransfer.files);
       });

@@ -49,6 +49,7 @@
           <!-- Step 2: Select Category & Write Description -->
           <!-- <div class="step step-2"> = A 'Step Step-X' Classification is useful if we combine all steps into a single html file and toggle between steps with the next and back buttons -->
             <div id="category-group">
+              <!-- 🐞 TO DO: improve keyboard accessiblity and include tab functionality through all radio buttons - skip link jumps from header to text box without going through radio buttons -->
               <fieldset role="radiogroup" aria-labelledby="category-heading">
               <!-- Opted to use h2 and p rather than legend so classifed legend as visually hidden -->
               <legend class="visually-hidden">Issue Category Selection</legend>
@@ -276,7 +277,7 @@
 
             <!-- Form Navigation -->
             <div class="form-buttons-container">
-              <button onclick="goToStep('../step1/Location.html')" type="button" class="btn-secondary">Back</button>
+              <button onclick="goToStep('../Location/Location.html')" type="button" class="btn-secondary">Back</button>
               <button onclick="goToStep('../step3/photo.html')" type="button" class="btn-primary">Next</button>
             </div>
           </div>
@@ -379,19 +380,19 @@
           }
 
           localStorage.setItem("selectedCategory", categoryRadio.value); // Save Selected
-          console.log("Category:", categoryRadio.value);
+          console.log("Category:", categoryRadio.value); // ✅ - logged to console to test for any errors
         });
       });
 
       // === Character Counter Functionality & Local Storage ===
       if (textBox && currentCount && characterCounter) {
-        const maxLength = parseInt(textBox.getAttribute("maxlength")) || 300;
+        const maxLength = parseInt(textBox.getAttribute("maxlength")) || 300; // ✅ fix - remember to convert string of text from text box into a number - otherwiese counter doesn't display!
 
         textBox.addEventListener("input", function () {
           const currentLength = this.value.length;
           currentCount.textContent = currentLength;
           localStorage.setItem("issueDescription", this.value); // Save Text Content
-          console.log("Description:", this.value)
+          console.log("Description:", this.value) // ✅ - logged to console to test for any errors
 
           if (currentLength >= maxLength * 0.9) {
             characterCounter.style.color = "#ef4444"; // Tailwind Red 500
