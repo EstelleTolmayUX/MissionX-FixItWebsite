@@ -22,7 +22,7 @@
 
   <body>
     <!-- ✅ Accessibility Enhancement: Skip link: Skip navigation for screen readers and keyboard users-->
-    <a href="#success-page-title" class="skip-link">Skip to main content</a>
+    <a href="#review-report-title" class="skip-link">Skip to main content</a>
 
     <header>
       <h1 class="logo">Fix!t</h1>
@@ -51,9 +51,9 @@
         <!-- Content Section: Shows report preview before user submits -->
         <div class="content">
           <form id="reportForm">
-            <h2 id="review-report-title">Almost There - Let's Review Your Report</h2>
+            <h2 id="review-report-title" tabindex="-1">Almost There - Let's Review Your Report</h2>
             <!-- Mobile responsive version drops title text to next line on smaller screens -->
-            <h2 id="review-report-title-responsive">
+            <h2 id="review-report-title-responsive" tabindex="-1">
               Almost There <br />
               Let's Review Your Report
             </h2>
@@ -139,27 +139,33 @@
       // ==========================================
       // REPORT DATA MANAGEMENT
       // ==========================================
+      // Mock Report Data, Local Data Management: The JS below simulates how user data would flow between form steps by creating sample report information,
+      // showing it on the review page, and storing it in the browser when the user clicks submit.
+      // This demonstrates the data persistence functionality that would normally require a backend database.
+
+      // 1. Wait for the page to load
       document.addEventListener("DOMContentLoaded", function () {
-        // Mock Report Data: Simulates data from previous form steps
-        // TODO: Replace with actual data from localStorage or form state management
+        // 2. Create mock report data
+        // TODO: Replace with actual data from localStorage or look into form state management
         const mockReportData = {
           location: "Mount Eden Road, Mount Eden, Auckland",
           category: "Graffiti & Vandalism",
           description: "Graffiti on brick wall of library in Mount Eden.",
         };
 
-        // Display the data on Review page (populate the spans/elements)
+        // 3. Display / show the data on Review page (populate the spans/elements)
         document.getElementById("display-location").textContent = mockReportData.location;
         document.getElementById("display-category").textContent = mockReportData.category;
         document.getElementById("display-description").textContent = mockReportData.description;
 
-        // ✅ SUBMIT BUTTON – Save data and go to Success Page
+        // 4. Handle SUBMIT BUTTON – Save data and go to Success Page
         document.getElementById("submit-btn").addEventListener("click", function (event) {
           event.preventDefault();
+          // stops the normal form submission
 
-          // Save the same data that was displayed
+          //🥨 Save the same data that was displayed to browser storage
           localStorage.setItem("reportData", JSON.stringify(mockReportData));
-
+          //  Go to Success Page
           window.location.href = "../Success-Page/success-page.html";
         });
       });
@@ -174,7 +180,7 @@
       });
 
       // ==========================================
-      // MOBILE MENU FUNCTIONALITY
+      // 📱MOBILE MENU FUNCTIONALITY
       // ==========================================
       // Mobile Navigation Toggle: Hamburger menu functionality
       //TODO:Improve mobile menu with escape key and click-outside functionality
