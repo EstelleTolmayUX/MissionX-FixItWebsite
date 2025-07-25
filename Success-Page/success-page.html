@@ -22,9 +22,8 @@
   </head>
 
   <body>
-    <!-- ✅ Accessibility: Skip link -->
+    <!-- ✅ Accessibility Enhancement: Skip link: Skip navigation for screen readers and keyboard users-->
     <a href="#success-page-title" class="skip-link">Skip to main content</a>
-
     <header>
       <h1 class="logo">Fix!t</h1>
 
@@ -49,7 +48,7 @@
         <div class="content">
           <div class="success-icon">
             <i class="far fa-check-circle"></i>
-            <h2 id="success-page-title">Success!</h2>
+            <h2 id="success-page-title" tabindex="-1">Success!</h2>
             <p>Thank you for submitting your report.</p>
           </div>
 
@@ -61,7 +60,7 @@
               <i id="copyIDIcon" class="fas fa-copy" title="Copy Report ID" aria-label="Copy Report ID" role="button" tabindex="0" style="cursor: pointer; color: #4f46e5; margin-left: 0.5rem"></i>
             </p>
 
-            <!-- ✅ Action button -->
+            <!-- ✅ Report Data Management Action button -->
             <div style="margin-top: 1rem">
               <button id="downloadReportBtn" type="button" class="btn-secondary">Download Full Report</button>
             </div>
@@ -122,23 +121,26 @@
     </footer>
 
     <script>
-      // === Generate Report ID ===
+      // ======================
+      // Generate Report ID
+      // ======================
+      // 1. Create a function to generate unique IDs
       function generateReportID() {
         const prefix = "FXT";
-        const randomNum = Math.floor(100000 + Math.random() * 900000); // 6-digit number
+        const randomNum = Math.floor(100000 + Math.random() * 900000); // The math creates numbers between 100000-999999 (always 6 digits)
         return `${prefix}-${randomNum}`;
       }
-
+      // 2. Wait for page to load, then generate ID
       document.addEventListener("DOMContentLoaded", function () {
         // Generate and display report ID
         const reportID = generateReportID();
         const idSpan = document.getElementById("report-id");
         idSpan.textContent = reportID;
 
-        // Copy Report ID button
+        // 3. Set up copy button
         const copyIcon = document.getElementById("copyIDIcon");
-
         copyIcon.addEventListener("click", function () {
+          // 4. Copy ID to clipboard when clicked
           navigator.clipboard
             .writeText(reportID)
             .then(() => {
@@ -151,29 +153,48 @@
             .catch(() => alert("Failed to copy."));
         });
 
-        // Get report data from localStorage (for download only - not display)
+        // Notes:
+        // When the copy button is clicked:
+        // Copy the ID to clipboard (so users can paste it elsewhere)
+        // If successful:
+        // Show "copied" message
+        // Change icon from copy (📋) to checkmark (✔️)
+        // After 1.5 seconds, change back to copy icon
+
+        // If it fails: Show error message
+
+        // ==========================================
+        // REPORT DATA MANAGEMENT
+        // ==========================================
+        // 🥨1. Get saved reportData from localStorage (for download only - not display)
         const stored = localStorage.getItem("reportData");
 
+        // 2. Check if data exists
         if (stored) {
           const report = JSON.parse(stored);
+          // If data was found, convert it from JSON text back into a usable JavaScript object.
+          // If no data exists, skip to the error message at the bottom.
 
-          // Prepare full report text for download (data is used but not displayed)
+          // 3. Prepare full report text for download (data is used but not displayed)
           const reportText = `
-FixIt Report Summary
+      FixIt Report Summary
 
-Report ID: ${reportID}
-Location: ${report.location}
-Category: ${report.category}
-Description: ${report.description}
-Submitted: ${new Date().toLocaleDateString()}
+      Report ID: ${reportID}
+      Location: ${report.location}
+      Category: ${report.category}
+      Description: ${report.description}
+      Submitted: ${new Date().toLocaleDateString()}
 
-Thank you for using FixIt.
-`;
+      Thank you for using FixIt.
+      `;
 
-          // Download functionality
+          // 4. Set up the download button
           const downloadReportBtn = document.getElementById("downloadReportBtn");
           if (downloadReportBtn) {
             downloadReportBtn.addEventListener("click", () => {
+              // Find the download button and listen for clicks.
+
+              // 5. Create and trigger download
               const blob = new Blob([reportText], { type: "text/plain" });
               const link = document.createElement("a");
               link.href = URL.createObjectURL(blob);
@@ -188,8 +209,19 @@ Thank you for using FixIt.
         }
       });
 
+      // 📝Notes: Blob: Blob() constructor👷; Blob stands for Binary Large Object.
+      // It's a web API that represents raw data - essentially a file-like object that can hold any type of data,
+      // and use them with other web APIs like URL.createObjectURL() to generate downloadable links
+      // or send them via fetch requests. - mdn web docs
+
+      // The complete download mechanism:
+      // Blob() creates the file data
+      // URL.createObjectURL(blob) generates a temporary download URL
+      // link.download triggers the actual file download
+      // URL.revokeObjectURL() cleans up the temporary URL
+
       // ==========================================
-      // MOBILE MENU FUNCTIONALITY
+      // 📱MOBILE MENU FUNCTIONALITY
       // ==========================================
       // Mobile Navigation Toggle: Hamburger menu functionality
       //TODO:Improve mobile menu with escape key and click-outside functionality
