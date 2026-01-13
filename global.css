@@ -259,8 +259,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  font-size: 2rem; /* fix- use Font-Size to adjust size of icons */
-  flex-wrap: wrap; /* allow wrapping on very small screens */
+  font-size: 2rem; /* Size of Icons */
 }
 
 .footer-socials a {
